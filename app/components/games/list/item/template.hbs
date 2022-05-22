@@ -1,9 +1,13 @@
 {{! template-lint-disable no-inline-styles }}
+
 <div class='card d-inline-block mx-3' style='width: 18rem;'>
   <img src={{@game.picture}} class='card-img-top' alt='game' />
   <div class='card-body'>
     <h5 class='card-title'>{{@game.title}}</h5>
     <p class='card-text'>{{@game.description}}</p>
-    <a href='#' class='btn btn-primary'>Go somewhere</a>
+    <LinkTo @route={{@game.link}}>
+      <button class='btn btn-primary' type='button'>Play!
+      </button>
+    </LinkTo>
   </div>
 </div>

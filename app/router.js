@@ -11,4 +11,9 @@ Router.map(function () {
   this.route('users');
   this.route('settings');
   this.route('memory');
+
+  this.route('game', function () {
+    this.route('show');
+  });
+  this.route('whacamole');
 });

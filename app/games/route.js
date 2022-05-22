@@ -8,12 +8,14 @@ export default class GamesRoute extends Route {
         title: 'memory game',
         picture: 'assets/images/memory.png',
         description: 'match cards into pairs',
+        link: 'memory',
       },
       {
         id: 2,
         title: 'whac a mole',
         picture: 'assets/images/whacamole.png',
         description: 'click a mole as many times as You can',
+        link: 'whacamole',
       },
     ];
     return games;

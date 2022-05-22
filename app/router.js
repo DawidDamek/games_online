@@ -10,4 +10,5 @@ Router.map(function () {
   this.route('games');
   this.route('users');
   this.route('settings');
+  this.route('memory');
 });

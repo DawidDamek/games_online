@@ -16,4 +16,8 @@ Router.map(function () {
     this.route('show');
   });
   this.route('whacamole');
+
+  this.route('user', function () {
+    this.route('show');
+  });
 });

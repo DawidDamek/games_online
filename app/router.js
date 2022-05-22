@@ -18,7 +18,7 @@ Router.map(function () {
     this.route('whacamole');
 
     this.route('user', function () {
-      this.route('show');
+      this.route('show', { path: '/:id' });
     });
     this.route('settings');
   });

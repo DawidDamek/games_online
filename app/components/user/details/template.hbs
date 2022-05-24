@@ -3,7 +3,9 @@
 <div class='card mx-auto' style='width: 18rem;'>
   <img src='{{@user.photoURL}}' class='card-img-top' alt='user' />
   <div class='card-body'>
-    <h5 class='card-title'>{{@user.username}}</h5>
+    <h5 class='card-title'>{{@user.username}}
+      <img class='avatar' src={{@user.avatarURL}} alt='avatar' />
+    </h5>
   </div>
   <ul class='list-group list-group-flush'>
     <li class='list-group-item'>{{@user.id}}</li>

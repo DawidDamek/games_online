@@ -10,17 +10,23 @@ export default class ApplicationRoute extends Route {
       username: 'admin',
       password: 'admin123',
       email: 'admin@admin.com',
+      avatarURL: '/assets/images/icons/pig.png',
       photoURL:
         'https://naukawpolsce.pl/sites/default/files/styles/strona_glowna_slider_750x420/public/202005/portretProboscis_monkey_%28Nasalis_larvatus%29_male_head_0.jpg?itok=4nPIZ3jj',
       isAdmin: true,
+      whacamoleTopScore: 0,
+      memoryTopScore: 0,
     };
     const user2 = {
       id: 2,
       username: 'user',
       password: 'user123',
       email: 'user@user.com',
+      avatarURL: '/assets/images/icons/lion.png',
       photoURL:
         'https://img.smyk.com/https://beta-cdn.smyk.com/media/product/760/1/spongebob-recznik-30-50-cm-6752424.jpg',
+      whacamoleTopScore: 0,
+      memoryTopScore: 0,
     };
     const user1Model = this.store.createRecord('user', user1);
     const user2Model = this.store.createRecord('user', user2);

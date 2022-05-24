@@ -22,4 +22,6 @@ Router.map(function () {
     });
     this.route('settings');
   });
+  this.route('register');
+  this.route('login');
 });

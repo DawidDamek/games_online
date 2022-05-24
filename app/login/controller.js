@@ -30,6 +30,7 @@ export default class LoginController extends Controller {
     if (userExist) {
       const user = users.firstObject;
       this.loggedAs.set('id', user.id);
+      window.location.href = '/';
     }
   }
 }

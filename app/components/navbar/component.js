@@ -7,7 +7,6 @@ export default class NavbarComponent extends Component {
 
   @action
   onLogout() {
-    console.log('logout');
     this.loggedAs.set('id', null);
     window.location.href = '/login';
   }

@@ -5,6 +5,7 @@ import { inject as service } from '@ember/service';
 export default class LoginRoute extends Route {
   @storageFor('logged-as') loggedAs;
   @service router;
+  @service store;
 
   beforeModel() {
     const userId = this.loggedAs.get('id');

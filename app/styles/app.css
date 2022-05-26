@@ -10,3 +10,21 @@
   height: 50px;
   display: inline-flex;
 }
+
+div.scrollmenu {
+  background-color: #333;
+  overflow: auto;
+  white-space: nowrap;
+}
+
+div.scrollmenu input {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
+
+div.scrollmenu input:hover {
+  background-color: #777;
+}

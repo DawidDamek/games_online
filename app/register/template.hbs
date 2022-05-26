@@ -1,2 +1,181 @@
-{{page-title "Register"}}
-{{outlet}}
+{{page-title 'Register'}}
+<Header>Register</Header>
+
+<div class='container'>
+  <form {{on 'submit' this.onSubmit}}>
+
+    <div class='mb-3 row'>
+      <label for='username' class='col-sm-2 col-form-label'>Username</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          class='form-control'
+          id='username'
+          placeholder='username'
+          {{on 'input' this.onLoginChange}}
+        />
+      </div>
+    </div>
+    <div class='mb-3 row'>
+      <label for='email' class='col-sm-2 col-form-label'>Email</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          class='form-control'
+          id='email'
+          placeholder='email'
+          {{on 'input' this.onEmailChange}}
+        />
+      </div>
+    </div>
+
+    <div class='scrollmenu my-3'>
+      <input
+        type='image'
+        id='avatarURL1'
+        src='/assets/images/icons/lion.png'
+        value='/assets/images/icons/lion.png'
+        alt='lion'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL2'
+        src='/assets/images/icons/pig.png'
+        value='/assets/images/icons/pig.png'
+        alt='pig'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL3'
+        src='/assets/images/icons/bear.png'
+        value='/assets/images/icons/bear.png'
+        alt='bear'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL4'
+        src='/assets/images/icons/bunny.png'
+        value='/assets/images/icons/bunny.png'
+        alt='bunny'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL5'
+        src='/assets/images/icons/cat.png'
+        value='/assets/images/icons/cat.png'
+        alt='cat'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL6'
+        src='/assets/images/icons/cock.png'
+        value='/assets/images/icons/cock.png'
+        alt='cock'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL7'
+        src='/assets/images/icons/dragon.png'
+        value='/assets/images/icons/dragon.png'
+        alt='dragon'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL8'
+        src='/assets/images/icons/elephant.png'
+        value='/assets/images/icons/elephant.png'
+        alt='elephant'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL9'
+        src='/assets/images/icons/fox.png'
+        value='/assets/images/icons/fox.png'
+        alt='fox'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL10'
+        src='/assets/images/icons/giraffe.png'
+        value='/assets/images/icons/giraffe.png'
+        alt='giraffe'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL11'
+        src='/assets/images/icons/monkey.png'
+        value='/assets/images/icons/monkey.png'
+        alt='monkey'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL12'
+        src='/assets/images/icons/owl.png'
+        value='/assets/images/icons/owl.png'
+        alt='owl'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL13'
+        src='/assets/images/icons/panda.png'
+        value='/assets/images/icons/panda.png'
+        alt='panda'
+        {{on 'click' this.onAvatarChange}}
+      />
+      <input
+        type='image'
+        id='avatarURL14'
+        src='/assets/images/icons/tiger.png'
+        alt='tiger'
+        value='/assets/images/icons/tiger.png'
+        {{on 'click' this.onAvatarChange}}
+      />
+    </div>
+
+    <div class='mb-3 row'>
+      <label for='photoURL' class='col-sm-2 col-form-label'>Photo URL</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          class='form-control'
+          id='photoURL'
+          placeholder='photoURL'
+          {{on 'input' this.onPhotoURLChange}}
+        />
+      </div>
+    </div>
+    <div class='mb-3 row'>
+      <label
+        for='inputPassword'
+        class='col-sm-2 col-form-label'
+      >Password</label>
+      <div class='col-sm-10'>
+        <input
+          type='password'
+          class='form-control'
+          id='inputPassword'
+          placeholder='password'
+          {{on 'input' this.onPasswordChange}}
+        />
+      </div>
+    </div>
+    <div class='mb-3 row'>
+      <button type='submit' class='btn btn-primary'>Register</button>
+    </div>
+  </form>
+  <div>
+    <span>I've got an account </span><LinkTo @route='login'>Login.</LinkTo>
+  </div>
+</div>

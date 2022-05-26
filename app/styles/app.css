@@ -28,3 +28,6 @@ div.scrollmenu input {
 div.scrollmenu input:hover {
   background-color: #777;
 }
+div.scrollmenu input:focus {
+  background-color: #198754;
+}

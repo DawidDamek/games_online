@@ -1,0 +1,14 @@
+<label for='avatar' class='col-sm-2 col-form-label d-block mx-auto'>Chose Your
+  avatar:</label>
+<div id='avatar' class='scrollmenu my-3'>
+  {{#each this.avatarNames as |avatar|}}
+    <input
+      type='image'
+      id={{avatar}}
+      src={{concat '/assets/images/icons/' avatar '.png'}}
+      value={{concat '/assets/images/icons/' avatar '.png'}}
+      alt={{avatar}}
+      {{on 'click' @onChange}}
+    />
+  {{/each}}
+</div>

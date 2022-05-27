@@ -1,10 +1,8 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { storageFor } from 'ember-local-storage';
 
 export default class RegisterController extends Controller {
-  @storageFor('logged-as') loggedAs;
   @service store;
   @service router;
 
@@ -38,7 +36,6 @@ export default class RegisterController extends Controller {
   async onSubmit(event) {
     event.preventDefault();
     await this.model.save();
-    const user = this.model.id;
     this.router.transitionTo('login');
   }
 }

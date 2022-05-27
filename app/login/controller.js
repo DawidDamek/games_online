@@ -2,11 +2,10 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
-import { storageFor } from 'ember-local-storage';
 
 export default class LoginController extends Controller {
-  @storageFor('logged-as') loggedAs;
   @service store;
+  @service session;
   @tracked loginValue;
   @tracked passwordValue;
 
@@ -29,7 +28,7 @@ export default class LoginController extends Controller {
     const userExist = Boolean(users.length);
     if (userExist) {
       const user = users.firstObject;
-      this.loggedAs.set('id', user.id);
+      this.session.loginUser(user.id);
       window.location.href = '/';
     }
   }

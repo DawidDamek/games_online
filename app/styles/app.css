@@ -31,3 +31,12 @@ div.scrollmenu input:hover {
 div.scrollmenu input:focus {
   background-color: #198754;
 }
+
+.noDecorator {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.noDecorator:hover {
+  color: #111;
+}

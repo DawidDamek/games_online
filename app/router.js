@@ -20,7 +20,7 @@ Router.map(function () {
     this.route('user', function () {
       this.route('show', { path: '/:id' });
     });
-    this.route('settings');
+    this.route('user-settings', { path: '/profile' });
   });
   this.route('register');
   this.route('login');

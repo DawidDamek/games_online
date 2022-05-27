@@ -20,7 +20,7 @@
         <LinkTo class='nav-link' @route='home.users'>Users</LinkTo>
       </li>
       <li class='nav-item'>
-        <LinkTo class='nav-link' @route='home.settings'>Settings</LinkTo>
+        <LinkTo class='nav-link' @route='home.user-settings'>Settings</LinkTo>
       </li>
       <li class='nav-item'>
         <LinkTo class='nav-link' @route='login'>
@@ -29,16 +29,19 @@
       </li>
       <li class='nav-item'>
         <span class='nav-link'>Logged as:
-          <img
-            width='30'
-            height='30'
-            class='d-inline-block align-center'
-            src={{this.loggedUser.avatarURL}}
-            alt='avatar'
-          />
-          {{this.loggedUser.username}}
 
+          <LinkTo class='noDecorator' @route='home.user-settings'>
+            <img
+              width='30'
+              height='30'
+              class='d-inline-block align-center'
+              src={{this.loggedUser.avatarURL}}
+              alt='avatar'
+            />
+            {{this.loggedUser.username}}
+          </LinkTo>
         </span>
+
       </li>
       <li class='nav-item'>
         <span

@@ -31,7 +31,6 @@ export default class RegisterController extends Controller {
   @action
   onAvatarChange(event) {
     event.preventDefault();
-    console.log(event.target.value);
     this.model.avatarURL = event.target.value;
   }
 

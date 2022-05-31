@@ -7,15 +7,6 @@
   </div>
 
   <div class='col-6 d-inline-block'>
-    <div class='mb-3 row'>
-      <AvatarChooser @onChange={{this.onAvatarChange}} />
-    </div>
-    <EditUser
-      @onSave={{this.onSave}}
-      @onLoginChange={{this.onLoginChange}}
-      @onEmailChange={{this.onEmailChange}}
-      @onPasswordChange={{this.onPasswordChange}}
-      @onPhotoURLChange={{this.onPhotoURLChange}}
-    />
+    <EditUser @user={{this.model}} />
   </div>
 </div>

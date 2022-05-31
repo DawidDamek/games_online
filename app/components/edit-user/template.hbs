@@ -1,4 +1,8 @@
-<form {{on 'submit' @onSave}}>
+<form {{on 'submit' this.onSave}}>
+
+  <div class='mb-3 row'>
+    <AvatarChooser @onChange={{this.onAvatarChange}} />
+  </div>
 
   <div class='mb-3 row'>
     <label for='username' class='col-sm-2 col-form-label'>Username</label>
@@ -8,7 +12,7 @@
         class='form-control'
         id='username'
         placeholder='username'
-        {{on 'input' @onLoginChange}}
+        {{on 'input' this.onLoginChange}}
       />
     </div>
   </div>
@@ -20,7 +24,7 @@
         class='form-control'
         id='email'
         placeholder='email'
-        {{on 'input' @onEmailChange}}
+        {{on 'input' this.onEmailChange}}
       />
     </div>
   </div>
@@ -33,7 +37,7 @@
         class='form-control'
         id='photoURL'
         placeholder='photoURL'
-        {{on 'input' @onPhotoURLChange}}
+        {{on 'input' this.onPhotoURLChange}}
       />
     </div>
   </div>
@@ -45,11 +49,15 @@
         class='form-control'
         id='inputPassword'
         placeholder='password'
-        {{on 'input' @onPasswordChange}}
+        {{on 'input' this.onPasswordChange}}
       />
     </div>
   </div>
   <div class='mb-3 row'>
-    <button type='submit' class='btn btn-success'>Save</button>
+    <button
+      type='submit'
+      class='btn btn-success'
+      disabled={{this.shouldDisabledButton}}
+    >Save</button>
   </div>
 </form>

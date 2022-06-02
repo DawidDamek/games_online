@@ -47,6 +47,10 @@ export default class EditUserComponent extends Component {
     this.clearFields();
   }
 
+  @action
+  rollback() {
+    this.userChangeset.rollback();
+  }
   clearFields() {
     const fieldIds = ['username', 'email', 'inputPassword', 'photoURL'];
     fieldIds.map((fieldId) => {

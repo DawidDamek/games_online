@@ -11,7 +11,7 @@
         type='text'
         class='form-control'
         id='username'
-        placeholder='username'
+        value={{this.userChangeset.username}}
         {{on 'input' this.onLoginChange}}
       />
     </div>
@@ -23,7 +23,7 @@
         type='text'
         class='form-control'
         id='email'
-        placeholder='email'
+        value={{this.userChangeset.email}}
         {{on 'input' this.onEmailChange}}
       />
     </div>
@@ -36,7 +36,7 @@
         type='text'
         class='form-control'
         id='photoURL'
-        placeholder='photoURL'
+        value={{this.userChangeset.photoURL}}
         {{on 'input' this.onPhotoURLChange}}
       />
     </div>
@@ -48,16 +48,24 @@
         type='password'
         class='form-control'
         id='inputPassword'
-        placeholder='password'
+        value={{this.userChangeset.password}}
         {{on 'input' this.onPasswordChange}}
       />
     </div>
   </div>
   <div class='mb-3 row'>
-    <button
-      type='submit'
-      class='btn btn-success'
-      disabled={{this.shouldDisabledButton}}
-    >Save</button>
+    <div class='d-flex'>
+      <button
+        type='submit'
+        class='w-50 ms-1 btn btn-success'
+        disabled={{this.shouldDisabledButton}}
+      >Save</button>
+      <button
+        type='button'
+        class='w-50 ms-1 btn btn-danger'
+        disabled={{this.shouldDisabledButton}}
+        {{on 'click' this.rollback}}
+      >Cancel</button>
+    </div>
   </div>
 </form>

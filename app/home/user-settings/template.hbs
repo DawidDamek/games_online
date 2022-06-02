@@ -1,12 +1,12 @@
 {{page-title 'Settings'}}
 <Header>Settings</Header>
 
-<div class='container'>
-  <div class='col-6 d-inline-block'>
+<div class='container row'>
+  <div class='col col-6 d-block mx-auto'>
     <User::Details @user={{this.model}} />
   </div>
 
-  <div class='col-6 d-inline-block'>
+  <div class='col col-6 d-block mx-auto'>
     <EditUser @user={{this.model}} />
   </div>
 </div>

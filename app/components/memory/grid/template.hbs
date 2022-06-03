@@ -1,0 +1,7 @@
+test test
+<div id='grid'>
+  {{#each this.shuffledCards as |card|}}
+    <img src={{card.img}} alt={{card.name}} {{on 'click' this.flipCard}} />
+
+  {{/each}}
+</div>

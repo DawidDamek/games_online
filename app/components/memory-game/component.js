@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 
 export default class MemoryGameComponent extends Component {
   didInsertResult(element) {
-    element.textContent = 'dupa2';
+    element.textContent = 'testScore';
   }
 
   didInsertGrid(element) {

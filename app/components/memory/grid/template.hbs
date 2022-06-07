@@ -1,7 +1,13 @@
 test test
-<div id='grid'>
+<div id='grid' class='mx-auto'>
   {{#each this.shuffledCards as |card|}}
-    <img src={{card.img}} alt={{card.name}} {{on 'click' this.flipCard}} />
+    <img
+      role='button'
+      data-id={{card.cardId}}
+      src='/assets/images/blank.png'
+      alt={{card.name}}
+      {{on 'click' this.flipCard}}
+    />
 
   {{/each}}
 </div>

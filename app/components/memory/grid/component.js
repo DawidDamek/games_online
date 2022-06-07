@@ -1,7 +1,13 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 export default class MemoryGridComponent extends Component {
+  @tracked cardsChosen = [];
+  @tracked cardsChosenIds = [];
+  @tracked cardsWon = [];
+  @tracked result;
+
   cardArray = [
     {
       name: 'fries',
@@ -36,32 +42,32 @@ export default class MemoryGridComponent extends Component {
     {
       name: 'fries',
       img: '/assets/images/fries.png',
-      cardId: 1,
+      cardId: 7,
     },
     {
       name: 'cheeseburger',
       img: '/assets/images/cheeseburger.png',
-      cardId: 2,
+      cardId: 8,
     },
     {
       name: 'hotdog',
       img: '/assets/images/hotdog.png',
-      cardId: 3,
+      cardId: 9,
     },
     {
       name: 'icecream',
       img: '/assets/images/ice-cream.png',
-      cardId: 4,
+      cardId: 10,
     },
     {
       name: 'milkshake',
       img: '/assets/images/milkshake.png',
-      cardId: 5,
+      cardId: 11,
     },
     {
       name: 'pizza',
       img: '/assets/images/pizza.png',
-      cardId: 6,
+      cardId: 12,
     },
   ];
 
@@ -69,6 +75,12 @@ export default class MemoryGridComponent extends Component {
 
   @action
   flipCard(event) {
-    console.log(event.target.alt);
+    const clickedCard = this.shuffledCards.find((card) => {
+      return card.cardId === parseInt(event.target.getAttribute('data-id'));
+    });
+    this.cardsChosenIds.push(clickedCard.cardId);
+    this.cardsChosen.push(clickedCard.name);
+    event.target.setAttribute('src', [clickedCard.img]);
+    // here add this.checkMatch()
   }
 }

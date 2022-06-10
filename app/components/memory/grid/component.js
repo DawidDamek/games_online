@@ -3,10 +3,11 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class MemoryGridComponent extends Component {
-  @tracked cardsChosen = [];
+  @tracked cardsChosenNames = [];
   @tracked cardsChosenIds = [];
-  @tracked cardsWon = [];
-  @tracked result;
+  @tracked cardsTemplateElement = [];
+
+  @tracked result = 0;
 
   cardArray = [
     {
@@ -78,9 +79,44 @@ export default class MemoryGridComponent extends Component {
     const clickedCard = this.shuffledCards.find((card) => {
       return card.cardId === parseInt(event.target.getAttribute('data-id'));
     });
-    this.cardsChosenIds.push(clickedCard.cardId);
-    this.cardsChosen.push(clickedCard.name);
+    this.cardsChosenIds.push(event.target.getAttribute('data-id'));
+    this.cardsChosenNames.push(clickedCard.name);
+    this.cardsTemplateElement.push(event.target);
     event.target.setAttribute('src', [clickedCard.img]);
-    // here add this.checkMatch()
+
+    console.log(this.cardsTemplateElement);
+
+    if (this.cardsChosenNames.length == 2) {
+      setTimeout(this.checkMatch(event), 500);
+    }
+  }
+
+  checkMatch(event) {
+    const card = event.target;
+    const optionOneId = this.cardsChosenIds[0];
+    const optionTwoId = this.cardsChosenIds[1];
+
+    if (optionOneId == optionTwoId) {
+      alert('you have clicked the same image!');
+      card.setAttribute('src', '/assets/images/blank.png');
+    } else {
+      if (this.cardsChosenNames[0] == this.cardsChosenNames[1]) {
+        console.log('para');
+        this.result = this.result + 1;
+      } else {
+        console.log('nie para');
+        this.cardsTemplateElement[0].setAttribute(
+          'src',
+          '/assets/images/blank.png'
+        );
+        this.cardsTemplateElement[1].setAttribute(
+          'src',
+          '/assets/images/blank.png'
+        );
+      }
+      this.cardsChosenNames = [];
+      this.cardsChosenIds = [];
+      this.cardsTemplateElement = [];
+    }
   }
 }

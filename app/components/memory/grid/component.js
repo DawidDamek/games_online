@@ -1,13 +1,14 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { later, cancel } from '@ember/runloop';
 
 export default class MemoryGridComponent extends Component {
   @tracked cardsChosenNames = [];
   @tracked cardsChosenIds = [];
   @tracked cardsTemplateElement = [];
-
   @tracked result = 0;
+  @tracked flipCount = 0;
 
   cardArray = [
     {
@@ -76,22 +77,32 @@ export default class MemoryGridComponent extends Component {
 
   @action
   flipCard(event) {
+    if (this.flipCount === 2) {
+      return;
+    }
+
     const clickedCard = this.shuffledCards.find((card) => {
       return card.cardId === parseInt(event.target.getAttribute('data-id'));
     });
     this.cardsChosenIds.push(event.target.getAttribute('data-id'));
-    this.cardsChosenNames.push(clickedCard.name);
     this.cardsTemplateElement.push(event.target);
     event.target.setAttribute('src', [clickedCard.img]);
+    this.cardsChosenNames.push(clickedCard.name);
+    this.flipCount = this.flipCount + 1;
 
-    console.log(this.cardsTemplateElement);
-
-    if (this.cardsChosenNames.length == 2) {
-      setTimeout(this.checkMatch(event), 500);
+    if (this.cardsTemplateElement.length == 2) {
+      later(
+        this,
+        () => {
+          this.checkMatch(event);
+        },
+        500
+      );
     }
   }
 
   checkMatch(event) {
+    console.log('check match');
     const card = event.target;
     const optionOneId = this.cardsChosenIds[0];
     const optionTwoId = this.cardsChosenIds[1];
@@ -99,10 +110,12 @@ export default class MemoryGridComponent extends Component {
     if (optionOneId == optionTwoId) {
       alert('you have clicked the same image!');
       card.setAttribute('src', '/assets/images/blank.png');
+      console.log(this.flipCount);
     } else {
       if (this.cardsChosenNames[0] == this.cardsChosenNames[1]) {
         console.log('para');
         this.result = this.result + 1;
+        console.log(this.flipCount);
       } else {
         console.log('nie para');
         this.cardsTemplateElement[0].setAttribute(
@@ -113,7 +126,9 @@ export default class MemoryGridComponent extends Component {
           'src',
           '/assets/images/blank.png'
         );
+        console.log(this.flipCount);
       }
+      this.flipCount = 0;
       this.cardsChosenNames = [];
       this.cardsChosenIds = [];
       this.cardsTemplateElement = [];

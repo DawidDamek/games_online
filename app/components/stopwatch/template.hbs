@@ -1,0 +1,17 @@
+tu bedzie odliczany czas
+{{@stopwatch.numTicks}}
+<button
+  type='button'
+  class='btn btn-primary'
+  {{on 'click' @start}}
+>start</button>
+
+<button type='button' class='btn btn-primary' {{on 'click' @stop}}>
+  stop
+</button>
+
+<button
+  type='button'
+  class='btn btn-primary'
+  {{on 'click' @reset}}
+>reset</button>

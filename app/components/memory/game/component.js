@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { later } from '@ember/runloop';
+import Stopwatch from 'ember-stopwatch/utils/stopwatch';
 
 export default class MemoryGridComponent extends Component {
   @tracked cardsChosenNames = [];
@@ -10,6 +11,8 @@ export default class MemoryGridComponent extends Component {
   @tracked clickedShuffledCards = [];
   @tracked result = 0;
   @tracked flipCount = 0;
+
+  stopwatch = new Stopwatch(1000);
 
   cardArray = [
     {
@@ -87,6 +90,21 @@ export default class MemoryGridComponent extends Component {
   ];
 
   shuffledCards = this.cardArray.sort(() => 0.5 - Math.random());
+
+  @action
+  start() {
+    this.stopwatch.start();
+  }
+
+  @action
+  stop() {
+    this.stopwatch.stop();
+  }
+
+  @action
+  reset() {
+    this.stopwatch.reset();
+  }
 
   @action
   flipCard(event) {

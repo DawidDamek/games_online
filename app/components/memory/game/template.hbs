@@ -1,6 +1,16 @@
-test test
-{{this.result}}
+<div class='text-center'>
+  <Stopwatch
+    @stopwatch={{this.stopwatch}}
+    @start={{this.start}}
+    @stop={{this.stop}}
+    @reset={{this.reset}}
+  />
+  <h2>
+    Your pairs:
+    {{this.result}}
+  </h2>
 
+</div>
 <div id='grid' class='mx-auto'>
   {{#each this.shuffledCards as |card|}}
     <img

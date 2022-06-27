@@ -1,10 +1,13 @@
 <div class='text-center'>
-  <Stopwatch
-    @stopwatch={{this.stopwatch}}
-    @start={{this.start}}
-    @stop={{this.stop}}
-    @reset={{this.reset}}
-  />
+  <h3>
+    Your Time:
+    <Stopwatch
+      @stopwatch={{this.stopwatch}}
+      @start={{this.start}}
+      @stop={{this.stop}}
+      @reset={{this.reset}}
+    />
+  </h3>
   <h2>
     Your pairs:
     {{this.result}}
@@ -13,13 +16,16 @@
 </div>
 <div id='grid' class='mx-auto'>
   {{#each this.shuffledCards as |card|}}
-    <img
-      role='button'
-      data-id={{card.cardId}}
-      src='/assets/images/blank.png'
-      alt={{card.name}}
-      {{on 'click' this.flipCard}}
-    />
-
+    {{#if this.isStarted}}
+      <img
+        role='button'
+        data-id={{card.cardId}}
+        src='/assets/images/blank.png'
+        alt={{card.name}}
+        {{on 'click' this.flipCard}}
+      />
+    {{else}}
+      <img src='/assets/images/blank.png' alt={{card.name}} />
+    {{/if}}
   {{/each}}
 </div>

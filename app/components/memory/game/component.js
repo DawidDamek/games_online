@@ -11,8 +11,7 @@ export default class MemoryGridComponent extends Component {
   @tracked clickedShuffledCards = [];
   @tracked result = 0;
   @tracked flipCount = 0;
-
-  stopwatch = new Stopwatch(1000);
+  @tracked isStarted = false;
 
   cardArray = [
     {
@@ -89,11 +88,15 @@ export default class MemoryGridComponent extends Component {
     },
   ];
 
-  shuffledCards = this.cardArray.sort(() => 0.5 - Math.random());
+  stopwatch = new Stopwatch(1000);
+
+  @tracked shuffledCards = this.cardArray;
 
   @action
   start() {
     this.stopwatch.start();
+    this.isStarted = true;
+    this.shuffleCards();
   }
 
   @action
@@ -104,6 +107,7 @@ export default class MemoryGridComponent extends Component {
   @action
   reset() {
     this.stopwatch.reset();
+    this.isStarted = false;
   }
 
   @action
@@ -140,7 +144,6 @@ export default class MemoryGridComponent extends Component {
     const optionTwoId = this.cardsChosenIds[1];
 
     if (optionOneId == optionTwoId) {
-      alert('you have clicked the same image!');
       card.setAttribute('src', '/assets/images/blank.png');
     } else {
       if (this.cardsChosenNames[0] == this.cardsChosenNames[1]) {
@@ -162,5 +165,9 @@ export default class MemoryGridComponent extends Component {
       this.cardsChosenIds = [];
       this.cardsTemplateElement = [];
     }
+  }
+
+  shuffleCards() {
+    this.shuffledCards = this.cardArray.sort(() => 0.5 - Math.random());
   }
 }

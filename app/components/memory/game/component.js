@@ -12,6 +12,8 @@ export default class MemoryGridComponent extends Component {
   @tracked result = 0;
   @tracked flipCount = 0;
   @tracked isStarted = false;
+  @tracked shuffledCards = this.cardArray;
+  @tracked isPaused = false;
 
   cardArray = [
     {
@@ -90,18 +92,20 @@ export default class MemoryGridComponent extends Component {
 
   stopwatch = new Stopwatch(1000);
 
-  @tracked shuffledCards = this.cardArray;
-
   @action
   start() {
     this.stopwatch.start();
     this.isStarted = true;
-    this.shuffleCards();
+    if (!this.isPaused) {
+      this.shuffleCards();
+    }
+    this.isPaused = false;
   }
 
   @action
   stop() {
     this.stopwatch.stop();
+    this.isPaused = true;
   }
 
   @action
@@ -116,7 +120,7 @@ export default class MemoryGridComponent extends Component {
       return card.cardId === parseInt(event.target.getAttribute('data-id'));
     });
 
-    if (this.flipCount === 2 || clickedCard.isMatched) {
+    if (this.flipCount === 2 || clickedCard.isMatched || this.isPaused) {
       return;
     }
 

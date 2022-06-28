@@ -14,6 +14,7 @@ export default class MemoryGridComponent extends Component {
   @tracked isStarted = false;
   @tracked shuffledCards = this.cardArray;
   @tracked isPaused = false;
+  @tracked score = 0;
 
   cardArray = [
     {
@@ -169,9 +170,17 @@ export default class MemoryGridComponent extends Component {
       this.cardsChosenIds = [];
       this.cardsTemplateElement = [];
     }
+    if (this.result === 6) {
+      this.countFinalScore();
+    }
   }
 
   shuffleCards() {
     this.shuffledCards = this.cardArray.sort(() => 0.5 - Math.random());
+  }
+
+  countFinalScore() {
+    this.stopwatch.stop();
+    this.score = ((this.result / this.stopwatch.numTicks) * 100).toFixed(2);
   }
 }

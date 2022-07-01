@@ -4,6 +4,7 @@ s
   type='button'
   class='btn btn-success'
   {{on 'click' @start}}
+  disabled={{@shouldBeAbleToStart}}
 >start</button>
 
 <button type='button' class='btn btn-primary' {{on 'click' @stop}}>

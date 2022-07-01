@@ -3,8 +3,10 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { later } from '@ember/runloop';
 import Stopwatch from 'ember-stopwatch/utils/stopwatch';
+import { inject as service } from '@ember/service';
 
 export default class MemoryGridComponent extends Component {
+  @service session;
   @tracked cardsChosenNames = [];
   @tracked cardsChosenIds = [];
   @tracked cardsTemplateElement = [];
@@ -12,8 +14,8 @@ export default class MemoryGridComponent extends Component {
   @tracked result = 0;
   @tracked flipCount = 0;
   @tracked isStarted = false;
-  @tracked shuffledCards = this.cardArray;
   @tracked isPaused = false;
+  @tracked shuffledCards = this.cardArray;
   @tracked score = 0;
 
   cardArray = [
@@ -93,6 +95,10 @@ export default class MemoryGridComponent extends Component {
 
   stopwatch = new Stopwatch(1000);
 
+  get shouldBeAbleToStart() {
+    return Boolean(this.isStarted);
+  }
+
   @action
   start() {
     this.stopwatch.start();
@@ -107,12 +113,14 @@ export default class MemoryGridComponent extends Component {
   stop() {
     this.stopwatch.stop();
     this.isPaused = true;
+    this.isStarted = false;
   }
 
   @action
   reset() {
     this.stopwatch.reset();
     this.isStarted = false;
+    this.result = 0;
   }
 
   @action
@@ -150,6 +158,10 @@ export default class MemoryGridComponent extends Component {
 
     if (optionOneId == optionTwoId) {
       card.setAttribute('src', '/assets/images/blank.png');
+      this.flipCount = 0;
+      this.cardsChosenNames = [];
+      this.cardsChosenIds = [];
+      this.cardsTemplateElement = [];
     } else {
       if (this.cardsChosenNames[0] == this.cardsChosenNames[1]) {
         this.result = this.result + 1;
@@ -172,6 +184,10 @@ export default class MemoryGridComponent extends Component {
     }
     if (this.result === 6) {
       this.countFinalScore();
+      if (this.session.currentUser.memoryTopScore < this.score) {
+        this.session.currentUser.memoryTopScore = this.score;
+        this.saveUser();
+      }
     }
   }
 
@@ -182,5 +198,9 @@ export default class MemoryGridComponent extends Component {
   countFinalScore() {
     this.stopwatch.stop();
     this.score = ((this.result / this.stopwatch.numTicks) * 100).toFixed(2);
+  }
+
+  async saveUser() {
+    await this.session.currentUser.save();
   }
 }

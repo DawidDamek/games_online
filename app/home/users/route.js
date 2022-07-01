@@ -5,7 +5,6 @@ export default class UsersRoute extends Route {
   @service store;
 
   model() {
-    const users = this.store.findAll('user');
-    return users;
+    return this.store.findAll('user');
   }
 }

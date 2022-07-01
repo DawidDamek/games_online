@@ -1,5 +1,11 @@
 {{page-title 'Users'}}
 <Header>Users</Header>
 
-<Users::List @users={{this.model}} />
+<Users::List
+  @users={{this.sortedUsers}}
+  @sortMemory={{this.sortMemory}}
+  @sortWhacamole={{this.sortWhacamole}}
+  @onSortToggleMemory={{this.onSortToggleMemory}}
+  @onSortToggleWhac={{this.onSortToggleWhac}}
+/>
 {{outlet}}

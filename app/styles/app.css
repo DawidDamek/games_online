@@ -40,3 +40,7 @@ div.scrollmenu input:focus {
 .noDecorator:hover {
   color: #111;
 }
+
+.width-10px {
+  width: 10px;
+}

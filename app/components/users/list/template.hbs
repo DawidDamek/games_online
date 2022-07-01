@@ -5,7 +5,22 @@
       <th scope='col'>Username</th>
       <th scope='col'>Password</th>
       <th scope='col'>Email</th>
-      <th scope='col'>Memory top score</th>
+      <th scope='col'>
+        <Users::List::SortSwitcher
+          @label='Memory top score'
+          @sortParam={{@sortMemory}}
+          @onToggle={{@onSortToggleMemory}}
+        />
+      </th>
+
+      <th scope='col'>
+        <Users::List::SortSwitcher
+          @label='Whac
+          a Mole top score'
+          @sortParam={{@sortWhacamole}}
+          @onToggle={{@onSortToggleWhac}}
+        />
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +35,7 @@
         <td>{{user.password}}</td>
         <td>{{user.email}}</td>
         <td>{{user.memoryTopScore}}</td>
+        <td>{{user.whacamoleTopScore}}</td>
       </tr>
     {{/each}}
   </tbody>

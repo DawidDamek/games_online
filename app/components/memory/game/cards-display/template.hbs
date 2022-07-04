@@ -1,5 +1,5 @@
 <div id='grid' class='mx-auto'>
-  {{#each @shuffledCards as |card|}}
+  {{#each @shuffledCards as |card index|}}
     {{#if @isStarted}}
       <img
         role='button'
@@ -7,9 +7,14 @@
         src='/assets/images/blank.png'
         alt={{card.name}}
         {{on 'click' @flipCard}}
+        data-test-card={{index}}
       />
     {{else}}
-      <img src='/assets/images/blank.png' alt={{card.name}} />
+      <img
+        src='/assets/images/blank.png'
+        alt={{card.name}}
+        data-test-card-notStarted={{index}}
+      />
     {{/if}}
   {{/each}}
 </div>

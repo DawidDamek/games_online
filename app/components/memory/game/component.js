@@ -95,9 +95,7 @@ export default class MemoryGridComponent extends Component {
 
   stopwatch = new Stopwatch(1000);
 
-  get shouldBeAbleToStart() {
-    return Boolean(this.isStarted);
-  }
+  @tracked shouldBeAbleToStart = false;
 
   @action
   start() {
@@ -107,13 +105,14 @@ export default class MemoryGridComponent extends Component {
       this.shuffleCards();
     }
     this.isPaused = false;
+    this.shouldBeAbleToStart = true;
   }
 
   @action
   stop() {
     this.stopwatch.stop();
     this.isPaused = true;
-    this.isStarted = false;
+    this.shouldBeAbleToStart = false;
   }
 
   @action

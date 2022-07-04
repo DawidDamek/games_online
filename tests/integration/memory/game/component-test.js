@@ -449,6 +449,6 @@ module('integration | Component | memory/game', function (hooks) {
     const time = parseInt(find('[data-test-time]').textContent);
     assert.notEqual(time, 0);
 
-    assert.dom('[data-test-score').includesText('200');
+    assert.dom('[data-test-score]').includesText('200');
   });
 });

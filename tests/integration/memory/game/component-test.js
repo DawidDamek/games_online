@@ -24,18 +24,11 @@ module('integration | Component | memory/game', function (hooks) {
   });
 
   test('validation test', async function (assert) {
-    assert.dom('[data-test-card-notStarted="0"]').hasNoAttribute('role');
-    assert.dom('[data-test-card-notStarted="1"]').hasNoAttribute('role');
-    assert.dom('[data-test-card-notStarted="2"]').hasNoAttribute('role');
-    assert.dom('[data-test-card-notStarted="3"]').hasNoAttribute('role');
-    assert.dom('[data-test-card-notStarted="4"]').hasNoAttribute('role');
-    assert.dom('[data-test-card-notStarted="5"]').hasNoAttribute('role');
-    assert.dom('[data-test-card-notStarted="6"]').hasNoAttribute('role');
-    assert.dom('[data-test-card-notStarted="7"]').hasNoAttribute('role');
-    assert.dom('[data-test-card-notStarted="8"]').hasNoAttribute('role');
-    assert.dom('[data-test-card-notStarted="9"]').hasNoAttribute('role');
-    assert.dom('[data-test-card-notStarted="10"]').hasNoAttribute('role');
-    assert.dom('[data-test-card-notStarted="11"]').hasNoAttribute('role');
+    Array(12)
+      .fill('data-test-card-notStarted')
+      .map((selector, index) =>
+        assert.dom(`[${selector}="${index}"]`).hasNoAttribute('role')
+      );
 
     await click('[data-test-start-button]');
     assert.dom('[data-test-start-button]').hasAttribute('disabled');
@@ -424,31 +417,22 @@ module('integration | Component | memory/game', function (hooks) {
     assert.dom('[data-test-result]').hasText('Number of pairs: 6');
 
     await click('[data-test-reset-button]');
-    assert
-      .dom('[data-test-card-notStarted="0"]')
-      .hasAttribute('src', '/assets/images/blank.png');
-    assert
-      .dom('[data-test-card-notStarted="1"]')
-      .hasAttribute('src', '/assets/images/blank.png');
-    assert
-      .dom('[data-test-card-notStarted="2"]')
-      .hasAttribute('src', '/assets/images/blank.png');
-    assert
-      .dom('[data-test-card-notStarted="3"]')
-      .hasAttribute('src', '/assets/images/blank.png');
-    assert
-      .dom('[data-test-card-notStarted="4"]')
-      .hasAttribute('src', '/assets/images/blank.png');
-    assert
-      .dom('[data-test-card-notStarted="5"]')
-      .hasAttribute('src', '/assets/images/blank.png');
-    assert
-      .dom('[data-test-card-notStarted="6"]')
-      .hasAttribute('src', '/assets/images/blank.png');
+    Array(7)
+      .fill('data-test-card-notStarted')
+      .map((selector, index) =>
+        assert
+          .dom(`[${selector}="${index}"]`)
+          .hasAttribute(
+            'src',
+            '/assets/images/blank.png',
+            `is card ${index} blank after reset`
+          )
+      );
 
     const time = parseInt(find('[data-test-time]').textContent);
     assert.notEqual(time, 0);
 
-    assert.dom('[data-test-score]').includesText('200');
+    const score = JSON.stringify((6 / time) * 100);
+    assert.dom('[data-test-score]').includesText(score);
   });
 });

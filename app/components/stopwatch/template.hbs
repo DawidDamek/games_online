@@ -1,13 +1,19 @@
-{{@stopwatch.numTicks}}
+<span data-test-time>{{@stopwatch.numTicks}}</span>
 s
 <button
   type='button'
   class='btn btn-success'
   {{on 'click' @start}}
   disabled={{@shouldBeAbleToStart}}
+  data-test-start-button
 >start</button>
 
-<button type='button' class='btn btn-primary' {{on 'click' @stop}}>
+<button
+  type='button'
+  class='btn btn-primary'
+  {{on 'click' @stop}}
+  data-test-pause-button
+>
   pause
 </button>
 
@@ -15,4 +21,5 @@ s
   type='button'
   class='btn btn-danger'
   {{on 'click' @reset}}
+  data-test-reset-button
 >reset</button>

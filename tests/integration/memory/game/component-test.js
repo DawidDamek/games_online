@@ -432,7 +432,7 @@ module('integration | Component | memory/game', function (hooks) {
     const time = parseInt(find('[data-test-time]').textContent);
     assert.notEqual(time, 0);
 
-    const score = JSON.stringify((6 / time) * 100);
+    const score = `${(6 / time) * 100}`;
     assert.dom('[data-test-score]').includesText(score);
   });
 });

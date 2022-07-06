@@ -1,13 +1,13 @@
 <WhacAMole::Game::Interface
   @timer={{this.timeInSeconds}}
+  @shouldBeDisabled={{this.shouldBeAbleToChangeDifficulty}}
+  @isStarted={{this.isStarted}}
   @onStart={{this.moveMole}}
   @onStop={{this.stopMole}}
   @onEasy={{this.onEasy}}
   @onMedium={{this.onMedium}}
   @onHard={{this.onHard}}
   @onReset={{this.onReset}}
-  @isStarted={{this.isStarted}}
-  @shouldBeDisabled={{this.shouldBeAbleToChangeDifficulty}}
 />
 
 <WhacAMole::Game::Hits @score={{this.score}} />
@@ -15,4 +15,11 @@
 <WhacAMole::Game::GridDisplay
   @squares={{this.squares}}
   @onCatch={{this.addPoint}}
+/>
+
+<Shared::Button
+  @class='btn btn-primary'
+  @label='test'
+  @type='submit'
+  @onClick={{this.moveMole}}
 />

@@ -60,12 +60,13 @@
         class='w-50 ms-1 btn btn-success'
         disabled={{this.shouldDisabledButton}}
       >Save</button>
-      <button
-        type='button'
-        class='w-50 ms-1 btn btn-danger'
+
+      <Shared::Button
         disabled={{this.shouldDisabledButton}}
-        {{on 'click' this.rollback}}
-      >Cancel</button>
+        @label='Cancel'
+        @class='w-50 ms-1 btn btn-danger'
+        @onClick={{this.rollback}}
+      />
     </div>
   </div>
 </form>

@@ -1,25 +1,19 @@
 <span data-test-time>{{@stopwatch.numTicks}}</span>
 s
-<button
-  type='button'
-  class='btn btn-success'
-  {{on 'click' @start}}
+
+<Shared::Button
   disabled={{@shouldBeAbleToStart}}
+  @class='btn btn-success'
+  @label='start'
+  @onClick={{@start}}
   data-test-start-button
->start</button>
+/>
 
-<button
-  type='button'
-  class='btn btn-primary'
-  {{on 'click' @stop}}
-  data-test-pause-button
->
-  pause
-</button>
+<Shared::Button @label='pause' @onClick={{@stop}} data-test-pause-button />
 
-<button
-  type='button'
-  class='btn btn-danger'
-  {{on 'click' @reset}}
+<Shared::Button
+  @class='btn btn-danger'
+  @label='reset'
+  @onClick={{@reset}}
   data-test-reset-button
->reset</button>
+/>

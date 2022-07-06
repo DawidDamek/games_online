@@ -17,18 +17,10 @@ export default class WhacAMoleComponent extends Component {
   @tracked speed = 800;
   @tracked finalScore;
   @tracked shouldBeAbleToChangeDifficulty = false;
-
-  @tracked squares = [
-    { isShow: false, id: 1 },
-    { isShow: false, id: 2 },
-    { isShow: false, id: 3 },
-    { isShow: false, id: 4 },
-    { isShow: false, id: 5 },
-    { isShow: false, id: 6 },
-    { isShow: false, id: 7 },
-    { isShow: false, id: 8 },
-    { isShow: false, id: 9 },
-  ];
+  @tracked squares = Array.from({ length: 9 }, (_, id) => ({
+    isShow: false,
+    id,
+  }));
 
   timer = new Timer(30000);
 
@@ -84,6 +76,7 @@ export default class WhacAMoleComponent extends Component {
 
   @action
   onReset() {
+    this.stopMole();
     this.timer.reset();
     let blankSquares = this.squares.map((square) => {
       square.isShow = false;
@@ -121,5 +114,9 @@ export default class WhacAMoleComponent extends Component {
 
   async saveUser() {
     await this.session.currentUser.save();
+  }
+
+  willDestroy() {
+    clearInterval(this.startMoving);
   }
 }

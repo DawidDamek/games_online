@@ -5,6 +5,7 @@ export default class SharedButtonComponent extends Component {
   get type() {
     return this.args.type || 'button';
   }
+
   @action
   onClick() {
     this.args?.onClick?.();

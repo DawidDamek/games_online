@@ -3,6 +3,7 @@
     {{#if @isStarted}}
       <img
         role='button'
+        draggable='false'
         data-id={{card.cardId}}
         src='/assets/images/blank.png'
         alt={{card.name}}
@@ -13,6 +14,7 @@
       <img
         src='/assets/images/blank.png'
         alt={{card.name}}
+        draggable='false'
         data-test-card-notStarted={{index}}
       />
     {{/if}}

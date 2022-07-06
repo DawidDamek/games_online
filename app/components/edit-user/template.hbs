@@ -55,16 +55,16 @@
   </div>
   <div class='mb-3 row'>
     <div class='d-flex'>
-      <button
-        type='submit'
-        class='w-50 ms-1 btn btn-success'
+      <Shared::Button
+        class='w-50 ms-1 btn-success'
         disabled={{this.shouldDisabledButton}}
-      >Save</button>
+        @label='Save'
+      />
 
       <Shared::Button
+        class='w-50 ms-1 btn-danger'
         disabled={{this.shouldDisabledButton}}
         @label='Cancel'
-        @class='w-50 ms-1 btn btn-danger'
         @onClick={{this.rollback}}
       />
     </div>

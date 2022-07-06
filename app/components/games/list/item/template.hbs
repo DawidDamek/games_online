@@ -6,8 +6,7 @@
     <h5 class='card-title'>{{@game.title}}</h5>
     <p class='card-text'>{{@game.description}}</p>
     <LinkTo @route={{@game.link}}>
-      <button class='btn btn-primary' type='button'>Play!
-      </button>
+      <Shared::Button class='btn-primary' type='button' @label='Play!' />
     </LinkTo>
   </div>
 </div>

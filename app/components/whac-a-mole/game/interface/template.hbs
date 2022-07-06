@@ -1,0 +1,31 @@
+<div class='text-center'>
+
+  <Shared::Button
+    disabled={{@isStarted}}
+    class='btn-success'
+    @label='start'
+    @onClick={{@onStart}}
+  />
+
+  <Shared::Button class='btn-primary' @label='stop' @onClick={{@onStop}} />
+
+  <Shared::Button class='btn-danger' @label='reset' @onClick={{@onReset}} />
+
+  <h3>
+    Time remaining:
+    {{@timer}}s
+  </h3>
+  <div class='ml=-3'>
+
+    <Shared::Button class='btn-success' @label='easy' @onClick={{@onEasy}} />
+
+    <Shared::Button
+      class='btn-success'
+      @label='medium'
+      @onClick={{@onMedium}}
+    />
+
+    <Shared::Button class='btn-success' @label='hard' @onClick={{@onHard}} />
+
+  </div>
+</div>

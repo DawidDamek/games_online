@@ -1,6 +1,6 @@
 <button
-  ...attributes
   class={{if @class @class 'btn btn-primary'}}
   type={{if @type @type 'button'}}
   {{on 'click' @onClick}}
+  ...attributes
 >{{@label}}</button>

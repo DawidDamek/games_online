@@ -1,0 +1,45 @@
+<div class='text-center'>
+  <button
+    type='button'
+    class='btn btn-success'
+    {{on 'click' @onStart}}
+    disabled={{@isStarted}}
+  >start</button>
+
+  <button
+    type='button'
+    class='btn btn-primary'
+    {{on 'click' @onStop}}
+  >stop</button>
+
+  <button
+    type='button'
+    class='btn btn-danger'
+    {{on 'click' @onReset}}
+  >reset</button>
+
+  <h3>
+    Time remaining:
+    {{@timer}}s
+  </h3>
+  <div class='ml=-3'>
+    <button
+      type='button'
+      class='btn btn-success'
+      {{on 'click' @onEasy}}
+      disabled={{@shouldBeDisabled}}
+    >easy</button>
+    <button
+      type='button'
+      class='btn btn-success'
+      {{on 'click' @onMedium}}
+      disabled={{@shouldBeDisabled}}
+    >medium</button>
+    <button
+      type='button'
+      class='btn btn-success'
+      {{on 'click' @onHard}}
+      disabled={{@shouldBeDisabled}}
+    >hard</button>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class='grid'>
+  {{#each @squares as |square|}}
+    {{#if square.isShow}}
+      <img
+        class='square user-select-none'
+        draggable='false'
+        id={{square.id}}
+        role='button'
+        src='/assets/images/mole.jpg'
+        alt={{square}}
+        {{on 'click' @onCatch}}
+      />
+    {{else}}
+      <img
+        class='square user-select-none pe-none'
+        id={{square.id}}
+        type='button'
+        src='/assets/images/white.png'
+        alt={{square}}
+      />
+    {{/if}}
+  {{/each}}
+</div>

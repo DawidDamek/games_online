@@ -117,6 +117,7 @@ export default class WhacAMoleComponent extends Component {
   }
 
   willDestroy() {
+    super.willDestroy(...arguments);
     clearInterval(this.startMoving);
   }
 }

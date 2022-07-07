@@ -84,6 +84,7 @@ export default class WhacAMoleComponent extends Component {
     });
     this.squares = cloneDeep(blankSquares);
     this.shouldBeAbleToChangeDifficulty = false;
+    this.score = 0;
   }
 
   finishedGame() {
@@ -119,5 +120,6 @@ export default class WhacAMoleComponent extends Component {
   willDestroy() {
     super.willDestroy(...arguments);
     clearInterval(this.startMoving);
+    this.timer.reset();
   }
 }

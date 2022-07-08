@@ -1,6 +1,19 @@
 <div class='text-center mb-3'>
-  <Shared::Button class='btn-success' @label='Start' @onClick={{@onStart}} />
+  <Shared::Button
+    class='btn-success'
+    disabled={{@shouldBeDisabled}}
+    @label='Start'
+    @onClick={{@onStart}}
+  />
   <Shared::Button class='btn-danger' @label='Reset' @onClick={{@onReset}} />
+  <Shared::Button
+    class='btn-primary'
+    disabled={{@shouldBeDisabled}}
+    @label='Change Game Mode'
+    @onClick={{@onChangeGameMode}}
+  />
+
+  <h2>Game mode:{{@gameMode}}</h2>
 
   <h2>Winner Is: {{@winner}}</h2>
 </div>

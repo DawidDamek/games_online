@@ -20,7 +20,6 @@ module('Acceptance | whacamole', function (hooks) {
     await visit('/whacamole');
     await waitFor('[data-test-start-button]');
     await click('[data-test-start-button]');
-    // await this.pauseTest();
     assert.strictEqual(currentURL(), '/whacamole');
   });
 });

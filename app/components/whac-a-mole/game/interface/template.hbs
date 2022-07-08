@@ -1,25 +1,25 @@
 <div class='text-center'>
 
   <Shared::Button
+    data-test-start-button
     disabled={{@isStarted}}
     class='btn-success'
     @label='start'
     @onClick={{@onStart}}
-    data-test-start-button
   />
 
   <Shared::Button
+    data-test-stop-button
     class='btn-primary'
     @label='stop'
     @onClick={{@onStop}}
-    data-test-stop-button
   />
 
   <Shared::Button
+    data-test-reset-button
     class='btn-danger'
     @label='reset'
     @onClick={{@onReset}}
-    data-test-reset-button
   />
 
   <h3>
@@ -29,27 +29,27 @@
   <div class='ml=-3'>
 
     <Shared::Button
+      data-test-easy-button
       class='btn-success'
       @label='easy'
       @onClick={{@onEasy}}
       disabled={{@shouldBeDisabled}}
-      data-test-easy-button
     />
 
     <Shared::Button
+      data-test-medium-button
       class='btn-success'
       @label='medium'
       @onClick={{@onMedium}}
       disabled={{@shouldBeDisabled}}
-      data-test-medium-button
     />
 
     <Shared::Button
+      data-test-hard-button
       class='btn-success'
       @label='hard'
       @onClick={{@onHard}}
       disabled={{@shouldBeDisabled}}
-      data-test-hard-button
     />
 
   </div>

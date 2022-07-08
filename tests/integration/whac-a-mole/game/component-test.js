@@ -53,8 +53,11 @@ module('integration | Component | whac-a-mole/game', function (hooks) {
 
     await click('[data-test-start-button]');
     await waitFor('[data-test-moleSquare]');
-    assert.dom('[data-test-moleSquare]').exists('mole exists after start');
-    assert.dom('[data-test-moleSquare]').hasAttribute('role');
+    assert
+      .dom('[data-test-moleSquare]')
+      .exists('mole exists after start')
+      .hasAttribute('role');
+
     await click('[data-test-moleSquare]');
     assert
       .dom('[data-test-hits]')

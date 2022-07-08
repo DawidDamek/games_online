@@ -2,18 +2,23 @@
 s
 
 <Shared::Button
+  data-test-start-button
   disabled={{@shouldBeAbleToStart}}
   class='btn-success'
   @label='start'
   @onClick={{@start}}
-  data-test-start-button
 />
 
-<Shared::Button @label='pause' @onClick={{@stop}} data-test-pause-button />
+<Shared::Button
+  data-test-pause-button
+  class='btn-primary'
+  @label='pause'
+  @onClick={{@stop}}
+/>
 
 <Shared::Button
+  data-test-reset-button
   class='btn-danger'
   @label='reset'
   @onClick={{@reset}}
-  data-test-reset-button
 />

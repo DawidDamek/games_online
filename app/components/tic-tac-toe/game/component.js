@@ -30,10 +30,7 @@ export default class TicTacToeComponent extends Component {
   }
 
   get gameMode() {
-    if (this.isSingleplayer) {
-      return 'Singleplayer';
-    }
-    return 'Multiplayer';
+    return this.isSingleplayer ? 'Singleplayer' : 'Multiplayer';
   }
 
   get shouldBeAbleToClick() {
@@ -41,11 +38,7 @@ export default class TicTacToeComponent extends Component {
   }
 
   get nobodyWin() {
-    return Boolean(
-      this.blocks.find((block) => {
-        return block.id !== null;
-      })
-    );
+    return Boolean(this.blocks.find(({ id }) => id !== null));
   }
 
   @action
@@ -119,19 +112,18 @@ export default class TicTacToeComponent extends Component {
         this.winner = 'O';
       }
     });
-    if (this.blocks.every((block) => block.symbol !== null)) {
+    if (this.blocks.every(({ symbol }) => symbol !== null)) {
       this.winner = 'Nobody';
     }
   }
 
   computerClick() {
-    if (this.blocks.every((block) => block.symbol !== null)) {
+    if (this.blocks.every(({ symbol }) => symbol !== null)) {
       return;
     }
-    this.computerPossibleBlocks = this.blocks.filter((block) => {
-      return block.symbol === null;
-    });
-    // console.log(this.computerPossibleBlocks);
+    this.computerPossibleBlocks = this.blocks.filter(
+      ({ symbol }) => symbol === null
+    );
     this.computerPossibleBlocks[
       random(0, this.computerPossibleBlocks.length - 1)
     ].symbol = 'O';

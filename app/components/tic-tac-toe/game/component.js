@@ -48,12 +48,11 @@ export default class TicTacToeComponent extends Component {
 
   @action
   onClick({ target }) {
-    const newGrid = this.blocks;
-    const blockState = newGrid.find(({ id }) => id === JSON.parse(target.id));
     if (!this.shouldBeAbleToClick) {
       return;
     }
-
+    const newGrid = this.blocks;
+    const blockState = newGrid.find(({ id }) => id === JSON.parse(target.id));
     if (this.isSingleplayer) {
       if (blockState.symbol !== null) {
         return;

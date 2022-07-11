@@ -47,8 +47,7 @@ export default class TicTacToeComponent extends Component {
   }
 
   @action
-  onClick(event) {
-    const { target } = event.target;
+  onClick({ target }) {
     if (this.isSingleplayer) {
       if (this.shouldBeAbleToClick) {
         const newGrid = this.blocks;

@@ -5,17 +5,24 @@ export default class GamesRoute extends Route {
     const games = [
       {
         id: 1,
-        title: 'memory game',
+        title: 'Memory game',
         picture: 'assets/images/memory.png',
-        description: 'match cards into pairs',
+        description: 'Match the cards into pairs',
         link: 'home.memory',
       },
       {
         id: 2,
-        title: 'whac a mole',
+        title: 'Whac a mole',
         picture: 'assets/images/whacamole.png',
-        description: 'click a mole as many times as You can',
+        description: 'Whack a mole as many times as You can',
         link: 'home.whacamole',
+      },
+      {
+        id: 3,
+        title: 'Tic-Tac-Toe',
+        picture: 'assets/images/TicTacToe.png',
+        description: 'MULTIPLAYER TicTacToe',
+        link: 'home.tictactoe',
       },
     ];
     return games;

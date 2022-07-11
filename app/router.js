@@ -11,11 +11,12 @@ Router.map(function () {
     this.route('games');
     this.route('users');
     this.route('memory');
+    this.route('whacamole');
+    this.route('tictactoe');
 
     this.route('game', function () {
       this.route('show');
     });
-    this.route('whacamole');
 
     this.route('user', function () {
       this.route('show', { path: '/:id' });

@@ -48,35 +48,30 @@ export default class TicTacToeComponent extends Component {
 
   @action
   onClick({ target }) {
-    if (this.isSingleplayer) {
-      if (this.shouldBeAbleToClick) {
-        const newGrid = this.blocks;
-        let blockState = newGrid.find(({ id }) => id === JSON.parse(target.id));
-        if (blockState.symbol !== null) {
-          return;
-        }
-        blockState.symbol = this.nextMove;
-        this.blocks = cloneDeep(newGrid);
-        this.computerClick();
-        this.checkWinner();
-      }
+    const newGrid = this.blocks;
+    const blockState = newGrid.find(({ id }) => id === JSON.parse(target.id));
+    if (!this.shouldBeAbleToClick) {
+      return;
     }
-    if (this.shouldBeAbleToClick) {
-      const newGrid = this.blocks;
-      let blockState = newGrid.find(({ id }) => id === JSON.parse(target.id));
+
+    if (this.isSingleplayer) {
       if (blockState.symbol !== null) {
         return;
       }
       blockState.symbol = this.nextMove;
       this.blocks = cloneDeep(newGrid);
-
-      if (this.nextMove === '𝗫') {
-        this.nextMove = 'O';
-      } else {
-        this.nextMove = '𝗫';
-      }
+      this.computerClick();
       this.checkWinner();
     }
+
+    if (blockState.symbol !== null) {
+      return;
+    }
+
+    blockState.symbol = this.nextMove;
+    this.blocks = cloneDeep(newGrid);
+    this.nextMove = this.nextMove === '𝗫' ? 'O' : '𝗫';
+    this.checkWinner();
     return;
   }
 
@@ -93,12 +88,17 @@ export default class TicTacToeComponent extends Component {
       id,
     }));
     this.winner = null;
+    this.nextMove = '𝗫';
   }
 
   checkWinner() {
-    let boardLine = this.matrix.map((line) => {
+    const boardLine = this.matrix.map((line) => {
       return line.map((index) => this.blocks[index].symbol);
     });
+
+    if (this.blocks.every(({ symbol }) => symbol !== null)) {
+      this.winner = 'Nobody';
+    }
     boardLine.forEach((line) => {
       if (line.every((value) => value === '𝗫')) {
         this.winner = '𝗫';
@@ -108,9 +108,6 @@ export default class TicTacToeComponent extends Component {
         this.winner = 'O';
       }
     });
-    if (this.blocks.every(({ symbol }) => symbol !== null)) {
-      this.winner = 'Nobody';
-    }
   }
 
   computerClick() {

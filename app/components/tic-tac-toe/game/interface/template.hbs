@@ -1,19 +1,26 @@
 <div class='text-center mb-3'>
   <Shared::Button
+    data-test-start-button
     class='btn-success'
     disabled={{@shouldBeDisabled}}
     @label='Start'
     @onClick={{@onStart}}
   />
-  <Shared::Button class='btn-danger' @label='Reset' @onClick={{@onReset}} />
   <Shared::Button
+    data-test-reset-button
+    class='btn-danger'
+    @label='Reset'
+    @onClick={{@onReset}}
+  />
+  <Shared::Button
+    data-test-gameMode-button
     class='btn-primary'
     disabled={{@shouldBeDisabled}}
     @label='Change Game Mode'
     @onClick={{@onChangeGameMode}}
   />
 
-  <h2>Game mode:{{@gameMode}}</h2>
+  <h2 data-test-gameMode-display>Game mode:{{@gameMode}}</h2>
 
-  <h2>Winner Is: {{@winner}}</h2>
+  <h2 data-test-winner-display>Winner Is: {{@winner}}</h2>
 </div>

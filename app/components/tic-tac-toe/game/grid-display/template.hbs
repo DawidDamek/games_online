@@ -2,13 +2,15 @@
   {{#each @blocks as |block index|}}
     {{#if @isStarted}}
       <div
+        data-test-clickBlock={{index}}
+        data-test-clickBlock-symbol={{block.symbol}}
         role='button'
         class='square d-flex justify-content-center align-items-center'
         id={{index}}
         {{on 'click' @onClick}}
       >{{block.symbol}}</div>
     {{else}}
-      <div class='square bg-secondary'></div>
+      <div data-test-disabledBlock={{index}} class='square bg-secondary'></div>
     {{/if}}
   {{/each}}
 </div>

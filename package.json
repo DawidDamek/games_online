@@ -75,5 +75,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "ember-modal-dialog": "^4.0.1"
   }
 }

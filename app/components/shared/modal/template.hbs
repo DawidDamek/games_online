@@ -1,0 +1,22 @@
+<Modal-dialog @translucentOverlay={{true}}>
+  <div class='modal-dialog'>
+    <div class='modal-content'>
+      <div class='modal-header'>
+        <h5 class='modal-title'>{{@title}}</h5>
+      </div>
+      <div class='modal-body'>
+        <div class='mb-3'>
+          <h5 class='modal-body'>{{@bodyContent}} {{@bodyAttribute}}</h5>
+        </div>
+        <div class='modal-footer'>
+          <Shared::Button
+            class='btn-primary'
+            @label='close'
+            @onClick={{@onClose}}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+</Modal-dialog>

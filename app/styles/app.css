@@ -1,3 +1,20 @@
+@import 'ember-modal-dialog/ember-modal-structure.css';
+@import 'ember-modal-dialog/ember-modal-appearance.css';
+
+.ember-modal-dialog {
+  padding: 0;
+}
+
+.modal-dialog {
+  margin: 0;
+  min-width: 380px;
+  display: flex;
+}
+
+.modal-footer {
+  padding-bottom: 0;
+}
+
 #grid {
   width: 400px;
   height: 300px;

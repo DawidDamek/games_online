@@ -2,13 +2,27 @@
 <table class='table table-sm'>
   <thead>
     <tr>
-      <th class='text-center' scope='col'>Game</th>
-      <th class='text-center' scope='col'>Points</th>
-      <th class='text-center' scope='col'>Date</th>
+      <th class='text-center' scope='col'>
+        <User::GameHistory::SortSwitcher
+          @label='Game'
+          @sortParam={{@sortGame}}
+          @onToggle={{@onSortGame}}
+        />
+      </th>
+      <th class='text-center' scope='col'><User::GameHistory::SortSwitcher
+          @label='Points'
+          @sortParam={{@sortPoints}}
+          @onToggle={{@onSortPoints}}
+        /></th>
+      <th class='text-center' scope='col'><User::GameHistory::SortSwitcher
+          @label='Date'
+          @sortParam={{@sortDate}}
+          @onToggle={{@onSortDate}}
+        /></th>
     </tr>
   </thead>
   <tbody>
-    {{#each @user.gameHistory as |game|}}
+    {{#each @user as |game|}}
       <tr>
         <td class='text-center'>{{game.gameName}}</td>
         <td class='text-center'>{{game.points}}</td>

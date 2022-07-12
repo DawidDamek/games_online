@@ -2,5 +2,13 @@
 <div class='container'>
   <User::Details @user={{this.model}} />
   <User::TopScores @user={{this.model}} />
-  <User::GameHistory @user={{this.model}} />
+  <User::GameHistory
+    @user={{this.sortedGameHistory}}
+    @sortGame={{this.sortGame}}
+    @sortPoints={{this.sortPoints}}
+    @sortDate={{this.sortDate}}
+    @onSortDate={{this.onSortDate}}
+    @onSortPoints={{this.onSortPoints}}
+    @onSortGame={{this.onSortGame}}
+  />
 </div>

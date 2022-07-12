@@ -8,7 +8,6 @@ import { inject as service } from '@ember/service';
 export default class WhacAMoleComponent extends Component {
   @service session;
   @service store;
-
   @tracked randomSquare;
   @tracked startMoving = null;
   @tracked score = 0;
@@ -110,9 +109,9 @@ export default class WhacAMoleComponent extends Component {
       square.isShow = false;
       return square;
     });
+    this.saveGameHistory();
     this.squares = cloneDeep(blankSquares);
     this.score = 0;
-    this.saveGameHistory();
   }
 
   generateRandomSquare() {

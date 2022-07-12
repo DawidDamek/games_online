@@ -1,3 +1,6 @@
 {{page-title 'Show'}}
-<User::Details @user={{this.model}} />
-<User::TopScores @user={{this.model}} />
+<div class='container'>
+  <User::Details @user={{this.model}} />
+  <User::TopScores @user={{this.model}} />
+  <User::GameHistory @user={{this.model}} />
+</div>

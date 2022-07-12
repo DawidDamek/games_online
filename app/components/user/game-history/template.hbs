@@ -1,0 +1,21 @@
+<Header>{{@user.username}} games history</Header>
+<table class='table table-sm'>
+  <thead>
+    <tr>
+      <th class='text-center' scope='col'>Game</th>
+      <th class='text-center' scope='col'>Points</th>
+      <th class='text-center' scope='col'>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @user.gameHistory as |game|}}
+      <tr>
+        <td class='text-center'>{{game.gameName}}</td>
+        <td class='text-center'>{{game.points}}</td>
+        <td class='text-center'>
+          {{format-date game.date 'dd-MM-yyyy HH:mm'}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

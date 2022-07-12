@@ -25,6 +25,7 @@ module('integration | Component | tictactoe/game', function (hooks) {
     );
     await render(hbs`<TicTacToe::Game />`);
   });
+
   test('validation test', async function (assert) {
     Array(9)
       .fill('data-test-disabledBlock')
@@ -99,7 +100,6 @@ module('integration | Component | tictactoe/game', function (hooks) {
         assert
           .dom(`[${selector}="${index}"]`)
           .doesNotExist(`Clickable block ${index} does not exist after start`);
-        // await this.pauseTest();
       });
   });
 
@@ -155,6 +155,7 @@ module('integration | Component | tictactoe/game', function (hooks) {
         'game mode button is not disabled after reset'
       );
   });
+
   test('singleplayer test', async function (assert) {
     assert
       .dom('[data-test-gameMode-display]')
@@ -179,6 +180,5 @@ module('integration | Component | tictactoe/game', function (hooks) {
           .dom(`[${selector}="${index}"]`)
           .doesNotExist(`after reset clickable block ${index} does not exist`);
       });
-    // await this.pauseTest();
   });
 });

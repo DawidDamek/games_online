@@ -1,0 +1,14 @@
+<div class='grid'>
+  {{#each @blocks as |block index|}}
+    {{#if @isStarted}}
+      <div
+        role='button'
+        class='square d-flex justify-content-center align-items-center'
+        id={{index}}
+        {{on 'click' @onClick}}
+      >{{block.symbol}}</div>
+    {{else}}
+      <div class='square bg-secondary'></div>
+    {{/if}}
+  {{/each}}
+</div>

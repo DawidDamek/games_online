@@ -16,17 +16,24 @@ export default class WhacAMoleComponent extends Component {
   @tracked isStarted = false;
   @tracked difficult = 1;
   @tracked speed = 800;
-  @tracked finalScore;
+  @tracked finalScore = 0;
   @tracked shouldBeAbleToChangeDifficulty = false;
+  @tracked wasClicked = false;
   @tracked squares = Array.from({ length: 9 }, (_, id) => ({
     isShow: false,
     id,
   }));
 
-  timer = new Timer(30000);
+  time = 30000;
+
+  constructor() {
+    super(...arguments);
+
+    this.timer = new Timer(this.time);
+  }
 
   get timeInSeconds() {
-    return (this.timer.remainingMillis / 1000).toFixed(2);
+    return (this.timer.remainingMillis / 1000).toFixed(1);
   }
 
   @action
@@ -54,7 +61,10 @@ export default class WhacAMoleComponent extends Component {
     if (this.isPaused) {
       return;
     }
-    this.score++;
+    if (!this.wasClicked) {
+      this.score++;
+      this.wasClicked = true;
+    }
   }
 
   @action
@@ -85,6 +95,8 @@ export default class WhacAMoleComponent extends Component {
     });
     this.squares = cloneDeep(blankSquares);
     this.shouldBeAbleToChangeDifficulty = false;
+    this.score = 0;
+    this.finalScore = 0;
   }
 
   finishedGame() {
@@ -94,7 +106,6 @@ export default class WhacAMoleComponent extends Component {
       this.session.currentUser.whacamoleTopScore = this.finalScore;
       this.saveUser();
     }
-    alert(`Your final score is ${this.finalScore}`);
     let blankSquares = this.squares.map((square) => {
       square.isShow = false;
       return square;
@@ -112,6 +123,7 @@ export default class WhacAMoleComponent extends Component {
     this.squares = cloneDeep(blankSquares);
     this.randomSquare = this.squares[Math.floor(Math.random() * 9)];
     this.randomSquare.isShow = true;
+    this.wasClicked = false;
   }
 
   async saveUser() {
@@ -132,5 +144,6 @@ export default class WhacAMoleComponent extends Component {
   willDestroy() {
     super.willDestroy(...arguments);
     clearInterval(this.startMoving);
+    this.timer.reset();
   }
 }

@@ -1,15 +1,26 @@
 <div class='text-center'>
 
   <Shared::Button
+    data-test-start-button
     disabled={{@isStarted}}
     class='btn-success'
     @label='start'
     @onClick={{@onStart}}
   />
 
-  <Shared::Button class='btn-primary' @label='stop' @onClick={{@onStop}} />
+  <Shared::Button
+    data-test-stop-button
+    class='btn-primary'
+    @label='stop'
+    @onClick={{@onStop}}
+  />
 
-  <Shared::Button class='btn-danger' @label='reset' @onClick={{@onReset}} />
+  <Shared::Button
+    data-test-reset-button
+    class='btn-danger'
+    @label='reset'
+    @onClick={{@onReset}}
+  />
 
   <h3>
     Time remaining:
@@ -17,15 +28,29 @@
   </h3>
   <div class='ml=-3'>
 
-    <Shared::Button class='btn-success' @label='easy' @onClick={{@onEasy}} />
+    <Shared::Button
+      data-test-easy-button
+      class='btn-success'
+      @label='easy'
+      @onClick={{@onEasy}}
+      disabled={{@shouldBeDisabled}}
+    />
 
     <Shared::Button
+      data-test-medium-button
       class='btn-success'
       @label='medium'
       @onClick={{@onMedium}}
+      disabled={{@shouldBeDisabled}}
     />
 
-    <Shared::Button class='btn-success' @label='hard' @onClick={{@onHard}} />
+    <Shared::Button
+      data-test-hard-button
+      class='btn-success'
+      @label='hard'
+      @onClick={{@onHard}}
+      disabled={{@shouldBeDisabled}}
+    />
 
   </div>
 </div>

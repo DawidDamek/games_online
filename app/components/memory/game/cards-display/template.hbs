@@ -4,8 +4,8 @@
       <img
         role='button'
         draggable='false'
-        data-id={{card.cardId}}
         src='/assets/images/blank.png'
+        data-id={{card.cardId}}
         alt={{card.name}}
         {{on 'click' @flipCard}}
         data-test-card={{index}}
@@ -13,8 +13,8 @@
     {{else}}
       <img
         src='/assets/images/blank.png'
-        alt={{card.name}}
         draggable='false'
+        alt={{card.name}}
         data-test-card-notStarted={{index}}
       />
     {{/if}}

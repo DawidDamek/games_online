@@ -1,22 +1,24 @@
 <div class='grid'>
-  {{#each @squares as |square|}}
+  {{#each @squares as |square index|}}
     {{#if square.isShow}}
       <img
+        data-test-moleSquare
         class='square user-select-none'
         draggable='false'
-        id={{square.id}}
         role='button'
         src='/assets/images/mole.jpg'
-        alt={{square}}
+        alt='square'
+        id={{square.id}}
         {{on 'click' @onCatch}}
       />
     {{else}}
       <img
         class='square user-select-none pe-none'
-        id={{square.id}}
-        role='button'
+        draggable='false'
         src='/assets/images/white.png'
-        alt={{square}}
+        alt='square'
+        id={{square.id}}
+        data-test-whiteSquare={{index}}
       />
     {{/if}}
   {{/each}}

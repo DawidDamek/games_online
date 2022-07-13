@@ -8,6 +8,14 @@ export default class LoginController extends Controller {
   @service session;
   @tracked loginValue;
   @tracked passwordValue;
+  @tracked userExist;
+  @tracked isShowSharedModal = false;
+
+  @action
+  onHideModal() {
+    this.isShowSharedModal = false;
+    this.clearFields();
+  }
 
   @action
   onLoginChange(event) {
@@ -25,11 +33,20 @@ export default class LoginController extends Controller {
     const users = await this.store.query('user', {
       filter: { username: this.loginValue, password: this.passwordValue },
     });
-    const userExist = Boolean(users.length);
-    if (userExist) {
+    this.userExist = Boolean(users.length);
+    if (this.userExist) {
       const user = users.firstObject;
       this.session.loginUser(user.id);
       window.location.href = '/';
+    } else {
+      this.isShowSharedModal = true;
     }
+  }
+  clearFields() {
+    const fieldIds = ['staticLogin', 'inputPassword'];
+    fieldIds.map((fieldId) => {
+      const fieldElement = document.querySelector(`#${fieldId}`);
+      fieldElement.value = '';
+    });
   }
 }

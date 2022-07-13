@@ -12,3 +12,14 @@
   @isStarted={{this.isStarted}}
   @onClick={{this.onClick}}
 />
+
+{{#if this.isShowSharedModal}}
+  <Shared::Modal
+    @title='Who won this time?'
+    @onClose={{this.onHideModal}}
+    @modalInfoType={{true}}
+  >
+    <span data-test-winner-display>Winner Is:
+      {{this.winner}}</span>
+  </Shared::Modal>
+{{/if}}

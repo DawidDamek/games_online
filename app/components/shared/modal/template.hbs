@@ -6,14 +6,27 @@
       </div>
       <div class='modal-body'>
         <div class='mb-3'>
-          <h5 class='modal-body'>{{@bodyContent}} {{@bodyAttribute}}</h5>
+          <span class='modal-body'>{{yield}}</span>
         </div>
         <div class='modal-footer'>
-          <Shared::Button
-            class='btn-primary'
-            @label='close'
-            @onClick={{@onClose}}
-          />
+          {{#if @modalInfoType}}
+            <Shared::Button
+              class='btn-primary'
+              @label='Close'
+              @onClick={{@onClose}}
+            />
+          {{else}}
+            <Shared::Button
+              class='btn-success'
+              @label='Confirm'
+              @onClick={{@onConfirm}}
+            />
+            <Shared::Button
+              class='btn-danger'
+              @label='Cancel'
+              @onClick={{@onClose}}
+            />
+          {{/if}}
         </div>
       </div>
     </div>

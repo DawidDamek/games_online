@@ -71,3 +71,15 @@
     </div>
   </div>
 </form>
+
+{{#if this.isShowSharedModal}}
+  <Shared::Modal
+    @title='Confirm change'
+    @modalInfoType={{false}}
+    @onClose={{this.onHideModal}}
+    @onConfirm={{this.onConfirm}}
+  >
+    <h4 class='mb-2 text-center'>Changes preview:</h4>
+    <User::Details @user={{this.userChangeset}} />
+  </Shared::Modal>
+{{/if}}

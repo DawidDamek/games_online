@@ -20,8 +20,10 @@
 {{#if this.isShowSharedModal}}
   <Shared::Modal
     @title='Your final score'
-    @bodyContent='Congratulations! Your score is:'
-    @bodyAttribute={{this.finalScore}}
     @onClose={{this.onHideModal}}
-  />
+    @modalInfoType={{true}}
+  >
+    Congratulations! Your final score is:
+    {{this.finalScore}}
+  </Shared::Modal>
 {{/if}}

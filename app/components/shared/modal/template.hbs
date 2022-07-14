@@ -2,26 +2,29 @@
   <div class='modal-dialog'>
     <div class='modal-content'>
       <div class='modal-header'>
-        <h5 class='modal-title'>{{@title}}</h5>
+        <h5 data-test-title-content class='modal-title'>{{@title}}</h5>
       </div>
       <div class='modal-body'>
         <div class='mb-3'>
-          <span class='modal-body'>{{yield}}</span>
+          <span data-test-body-content class='modal-body'>{{yield}}</span>
         </div>
         <div class='modal-footer'>
           {{#if @modalInfoType}}
             <Shared::Button
+              data-test-close-button
               class='btn-primary'
               @label='Close'
               @onClick={{@onClose}}
             />
           {{else}}
             <Shared::Button
+              data-test-confirm-button
               class='btn-success'
               @label='Confirm'
               @onClick={{@onConfirm}}
             />
             <Shared::Button
+              data-test-cancel-button
               class='btn-danger'
               @label='Cancel'
               @onClick={{@onClose}}

@@ -3,12 +3,12 @@
 <div class='container col-8 col-md-6 col-lg-6'>
   <form {{on 'submit' this.onSubmit}}>
     <div class='mb-3 row'>
-      <label for='staticEmail' class='col-sm-2 col-form-label'>Username</label>
+      <label for='staticLogin' class='col-sm-2 col-form-label'>Username</label>
       <div class='col-sm-10'>
         <input
           type='text'
           class='form-control'
-          id='staticEmail'
+          id='staticLogin'
           placeholder='username'
           {{on 'input' this.onLoginChange}}
         />
@@ -37,3 +37,15 @@
     <span>Don't have account? </span><LinkTo @route='register'>Register</LinkTo>
   </div>
 </div>
+
+{{#if this.isShowSharedModal}}
+  <Shared::Modal
+    @title='Warning'
+    @onClose={{this.onHideModal}}
+    @modalInfoType={{true}}
+  >
+    <h4 class='text-danger'>
+      Incorrect login or password
+    </h4>
+  </Shared::Modal>
+{{/if}}

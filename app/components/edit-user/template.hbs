@@ -1,7 +1,7 @@
 <form {{on 'submit' this.onSave}}>
 
   <div class='mb-3 row'>
-    <AvatarChooser @onChange={{this.onAvatarChange}} />
+    <AvatarChooser @onChange={{(fn this.onPropertyChange 'avatarURL')}} />
   </div>
 
   <div class='mb-3 row'>
@@ -12,7 +12,7 @@
         class='form-control'
         id='username'
         value={{this.userChangeset.username}}
-        {{on 'input' this.onLoginChange}}
+        {{on 'input' (fn this.onPropertyChange 'username')}}
       />
     </div>
   </div>
@@ -24,7 +24,7 @@
         class='form-control'
         id='email'
         value={{this.userChangeset.email}}
-        {{on 'input' this.onEmailChange}}
+        {{on 'input' (fn this.onPropertyChange 'email')}}
       />
     </div>
   </div>
@@ -37,7 +37,7 @@
         class='form-control'
         id='photoURL'
         value={{this.userChangeset.photoURL}}
-        {{on 'input' this.onPhotoURLChange}}
+        {{on 'input' (fn this.onPropertyChange 'photoURL')}}
       />
     </div>
   </div>
@@ -49,7 +49,7 @@
         class='form-control'
         id='inputPassword'
         value={{this.userChangeset.password}}
-        {{on 'input' this.onPasswordChange}}
+        {{on 'input' (fn this.onPropertyChange 'password')}}
       />
     </div>
   </div>
@@ -71,3 +71,15 @@
     </div>
   </div>
 </form>
+
+{{#if this.isShowSharedModal}}
+  <Shared::Modal
+    @title='Confirm change'
+    @modalInfoType={{false}}
+    @onClose={{this.onHideModal}}
+    @onConfirm={{this.onConfirm}}
+  >
+    <h4 class='mb-2 text-center'>Changes preview:</h4>
+    <User::Details @user={{this.userChangeset}} />
+  </Shared::Modal>
+{{/if}}

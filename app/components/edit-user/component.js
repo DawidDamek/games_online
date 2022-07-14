@@ -5,11 +5,6 @@ import { tracked } from '@glimmer/tracking';
 
 export default class EditUserComponent extends Component {
   @tracked isShowSharedModal = false;
-  @tracked usernameChange = false;
-  @tracked photoURLChange = false;
-  @tracked emailChange = false;
-  @tracked passwordChange = false;
-  @tracked avatarChange = false;
 
   constructor() {
     super(...arguments);
@@ -34,46 +29,22 @@ export default class EditUserComponent extends Component {
   }
 
   @action
-  onLoginChange(event) {
-    this.usernameChange = true;
-    this.userChangeset.username = event.target.value;
-  }
-
-  @action
-  onEmailChange(event) {
-    this.emailChange = true;
-    this.userChangeset.email = event.target.value;
-  }
-
-  @action
-  onPasswordChange(event) {
-    this.passwordChange = true;
-    this.userChangeset.password = event.target.value;
-  }
-
-  @action
-  onPhotoURLChange(event) {
-    this.photoURLChange = true;
-    this.userChangeset.photoURL = event.target.value;
-  }
-
-  @action
-  onAvatarChange(event) {
+  onPropertyChange(key, event) {
     event.preventDefault();
-    this.avatarChange = false;
-    this.userChangeset.avatarURL = event.target.value;
+    this.userChangeset[key] = event.target.value || null;
   }
 
   @action
   async onSave(event) {
-    this.isShowSharedModal = true;
     event.preventDefault();
+    this.isShowSharedModal = true;
   }
 
   @action
   rollback() {
     this.userChangeset.rollback();
   }
+
   clearFields() {
     const fieldIds = ['username', 'email', 'inputPassword', 'photoURL'];
     fieldIds.map((fieldId) => {

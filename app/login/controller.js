@@ -42,6 +42,7 @@ export default class LoginController extends Controller {
       this.isShowSharedModal = true;
     }
   }
+
   clearFields() {
     const fieldIds = ['staticLogin', 'inputPassword'];
     fieldIds.map((fieldId) => {

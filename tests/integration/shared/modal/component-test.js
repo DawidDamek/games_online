@@ -6,10 +6,15 @@ import { hbs } from 'ember-cli-htmlbars';
 module('integration | Component | shared/model', function (hooks) {
   setupRenderingTest(hooks);
 
-  hooks.beforeEach(async function () {});
   test('Type info renders', async function (assert) {
     await render(
-      hbs`<Shared::Modal @title='Test title' @modalInfoType={{true}}>Body text cotent</Shared::Modal>`
+      hbs`
+      <Shared::Modal 
+        @title='Test title' 
+        @modalInfoType={{true}}
+      >
+        Body text cotent
+      </Shared::Modal>`
     );
 
     assert
@@ -23,7 +28,13 @@ module('integration | Component | shared/model', function (hooks) {
 
   test('Non info type renders', async function (assert) {
     await render(
-      hbs`<Shared::Modal @title='Test title' @modalInfoType={{false}}>Body text cotent</Shared::Modal>`
+      hbs`
+      <Shared::Modal
+        @title='Test title'
+        @modalInfoType={{false}}
+      >
+        Body text cotent
+      </Shared::Modal>`
     );
 
     assert

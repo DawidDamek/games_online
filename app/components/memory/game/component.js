@@ -18,6 +18,7 @@ export default class MemoryGridComponent extends Component {
   @tracked isPaused = false;
   @tracked shuffledCards = this.cardArray;
   @tracked score = 0;
+  @tracked isShowSharedModal = false;
 
   cardArray = [
     {
@@ -97,6 +98,12 @@ export default class MemoryGridComponent extends Component {
   stopwatch = new Stopwatch(1000);
 
   @tracked shouldBeAbleToStart = false;
+
+  @action
+  onHideModal() {
+    this.isShowSharedModal = false;
+    this.reset();
+  }
 
   @action
   start() {
@@ -189,6 +196,7 @@ export default class MemoryGridComponent extends Component {
         this.session.currentUser.memoryTopScore = this.score;
         this.saveUser();
       }
+      this.isShowSharedModal = true;
     }
   }
 

@@ -13,6 +13,7 @@ export default class TicTacToeComponent extends Component {
   @tracked winner = null;
   @tracked isSingleplayer = true;
   @tracked computerPossibleBlocks = [];
+  @tracked isShowSharedModal = false;
 
   matrix = [
     [0, 1, 2],
@@ -75,6 +76,12 @@ export default class TicTacToeComponent extends Component {
   }
 
   @action
+  onHideModal() {
+    this.isShowSharedModal = false;
+    this.onReset();
+  }
+
+  @action
   onStart() {
     this.isStarted = true;
   }
@@ -97,14 +104,17 @@ export default class TicTacToeComponent extends Component {
 
     if (this.blocks.every(({ symbol }) => symbol !== null)) {
       this.winner = 'Nobody';
+      this.isShowSharedModal = true;
     }
     boardLine.forEach((line) => {
       if (line.every((value) => value === '𝗫')) {
+        this.isShowSharedModal = true;
         this.winner = '𝗫';
       }
 
       if (line.every((value) => value === 'O')) {
         this.winner = 'O';
+        this.isShowSharedModal = true;
       }
     });
   }

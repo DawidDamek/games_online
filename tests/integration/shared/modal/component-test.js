@@ -34,6 +34,5 @@ module('integration | Component | shared/model', function (hooks) {
       .hasText('Body text cotent', 'Body has right content');
     assert.dom('[data-test-confirm-button]').exists('Confirm button exists');
     assert.dom('[data-test-cancel-button]').exists('Cancel button exists');
-    // await this.pauseTest();
   });
 });

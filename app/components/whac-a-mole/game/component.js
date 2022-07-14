@@ -7,7 +7,7 @@ import { inject as service } from '@ember/service';
 
 export default class WhacAMoleComponent extends Component {
   @service session;
-
+  @service store;
   @tracked randomSquare;
   @tracked startMoving = null;
   @tracked score = 0;
@@ -116,6 +116,7 @@ export default class WhacAMoleComponent extends Component {
       square.isShow = false;
       return square;
     });
+    this.saveGameHistory();
     this.isShowSharedModal = true;
     this.squares = cloneDeep(blankSquares);
     this.score = 0;
@@ -134,6 +135,17 @@ export default class WhacAMoleComponent extends Component {
 
   async saveUser() {
     await this.session.currentUser.save();
+  }
+
+  async saveGameHistory() {
+    const game = {
+      gameName: 'Whac a Mole',
+      date: new Date(),
+      points: this.finalScore,
+      player: this.session.currentUser,
+    };
+    const gameHistoryModel = this.store.createRecord('gameHistory', game);
+    await gameHistoryModel.save();
   }
 
   willDestroy() {

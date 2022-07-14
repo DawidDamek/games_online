@@ -28,9 +28,56 @@ export default class ApplicationRoute extends Route {
       whacamoleTopScore: 30,
       memoryTopScore: 50,
     };
+
     const user1Model = this.store.createRecord('user', user1);
     const user2Model = this.store.createRecord('user', user2);
     await user1Model.save();
     await user2Model.save();
+
+    const gamehistory1 = {
+      gameName: 'Whac a Mole',
+      date: new Date(2022, 6, 13),
+      points: 12,
+      player: user1Model,
+    };
+    const gamehistory2 = {
+      gameName: 'Whac a Mole',
+      date: new Date(2022, 3, 24),
+      points: 30,
+      player: user2Model,
+    };
+    const gamehistory3 = {
+      gameName: 'Memory',
+      date: new Date(2022, 6, 12),
+      points: 70,
+      player: user1Model,
+    };
+    const gamehistory4 = {
+      gameName: 'Memory',
+      date: new Date(2022, 6, 12),
+      points: 50,
+      player: user2Model,
+    };
+
+    const gameHistory1Model = this.store.createRecord(
+      'gameHistory',
+      gamehistory1
+    );
+    const gameHistory2Model = this.store.createRecord(
+      'gameHistory',
+      gamehistory2
+    );
+    const gameHistory3Model = this.store.createRecord(
+      'gameHistory',
+      gamehistory3
+    );
+    const gameHistory4Model = this.store.createRecord(
+      'gameHistory',
+      gamehistory4
+    );
+    await gameHistory1Model.save();
+    await gameHistory2Model.save();
+    await gameHistory3Model.save();
+    await gameHistory4Model.save();
   }
 }

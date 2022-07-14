@@ -1,8 +1,11 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { Changeset } from 'ember-changeset';
+import { tracked } from '@glimmer/tracking';
 
 export default class EditUserComponent extends Component {
+  @tracked isShowSharedModal = false;
+
   constructor() {
     super(...arguments);
     this.userChangeset = new Changeset(this.args.user);
@@ -13,44 +16,35 @@ export default class EditUserComponent extends Component {
   }
 
   @action
-  onLoginChange(event) {
-    this.userChangeset.username = event.target.value;
+  onHideModal() {
+    this.isShowSharedModal = false;
+    this.userChangeset.rollback();
   }
 
   @action
-  onEmailChange(event) {
-    this.userChangeset.email = event.target.value;
+  async onConfirm() {
+    this.isShowSharedModal = false;
+    await this.userChangeset.save();
+    this.clearFields();
   }
 
   @action
-  onPasswordChange(event) {
-    this.userChangeset.password = event.target.value;
-  }
-
-  @action
-  onPhotoURLChange(event) {
-    this.userChangeset.photoURL = event.target.value;
-  }
-
-  @action
-  onAvatarChange(event) {
+  onPropertyChange(key, event) {
     event.preventDefault();
-    this.userChangeset.avatarURL = event.target.value;
+    this.userChangeset[key] = event.target.value || null;
   }
 
   @action
   async onSave(event) {
     event.preventDefault();
-
-    await this.userChangeset.save();
-    alert('all changes are saved');
-    this.clearFields();
+    this.isShowSharedModal = true;
   }
 
   @action
   rollback() {
     this.userChangeset.rollback();
   }
+
   clearFields() {
     const fieldIds = ['username', 'email', 'inputPassword', 'photoURL'];
     fieldIds.map((fieldId) => {

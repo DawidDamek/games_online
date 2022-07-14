@@ -14,4 +14,15 @@
   @isStarted={{this.isStarted}}
   @flipCard={{this.flipCard}}
 />
-<span data-test-score>{{this.score}} </span>
+
+{{#if this.isShowSharedModal}}
+  <Shared::Modal
+    @title='Your final score'
+    @onClose={{this.onHideModal}}
+    @modalInfoType={{true}}
+  >
+    <span data-test-score>Congratulations! Your final score is:
+      {{this.score}}</span>
+
+  </Shared::Modal>
+{{/if}}

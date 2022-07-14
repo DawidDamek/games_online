@@ -7,6 +7,7 @@ import { inject as service } from '@ember/service';
 
 export default class MemoryGridComponent extends Component {
   @service session;
+  @service store;
   @tracked cardsChosenNames = [];
   @tracked cardsChosenIds = [];
   @tracked cardsTemplateElement = [];
@@ -17,6 +18,7 @@ export default class MemoryGridComponent extends Component {
   @tracked isPaused = false;
   @tracked shuffledCards = this.cardArray;
   @tracked score = 0;
+  @tracked isShowSharedModal = false;
 
   cardArray = [
     {
@@ -96,6 +98,12 @@ export default class MemoryGridComponent extends Component {
   stopwatch = new Stopwatch(1000);
 
   @tracked shouldBeAbleToStart = false;
+
+  @action
+  onHideModal() {
+    this.isShowSharedModal = false;
+    this.reset();
+  }
 
   @action
   start() {
@@ -183,10 +191,12 @@ export default class MemoryGridComponent extends Component {
     }
     if (this.result === 6) {
       this.countFinalScore();
+      this.saveGameHistory();
       if (this.session.currentUser.memoryTopScore < this.score) {
         this.session.currentUser.memoryTopScore = this.score;
         this.saveUser();
       }
+      this.isShowSharedModal = true;
     }
   }
 
@@ -197,6 +207,17 @@ export default class MemoryGridComponent extends Component {
   countFinalScore() {
     this.stopwatch.stop();
     this.score = ((this.result / this.stopwatch.numTicks) * 100).toFixed(2);
+  }
+
+  async saveGameHistory() {
+    const game = {
+      gameName: 'Memory',
+      date: new Date(),
+      points: this.score,
+      player: this.session.currentUser,
+    };
+    const gameHistoryModel = this.store.createRecord('gameHistory', game);
+    await gameHistoryModel.save();
   }
 
   async saveUser() {

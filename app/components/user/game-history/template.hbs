@@ -1,0 +1,35 @@
+<Header>{{@user.username}} games history</Header>
+<table class='table table-sm'>
+  <thead>
+    <tr>
+      <th class='text-center' scope='col'>
+        <User::GameHistory::SortSwitcher
+          @label='Game'
+          @sortParam={{@sortGame}}
+          @onToggle={{@onSortGame}}
+        />
+      </th>
+      <th class='text-center' scope='col'><User::GameHistory::SortSwitcher
+          @label='Points'
+          @sortParam={{@sortPoints}}
+          @onToggle={{@onSortPoints}}
+        /></th>
+      <th class='text-center' scope='col'><User::GameHistory::SortSwitcher
+          @label='Date'
+          @sortParam={{@sortDate}}
+          @onToggle={{@onSortDate}}
+        /></th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @user as |game|}}
+      <tr>
+        <td class='text-center'>{{game.gameName}}</td>
+        <td class='text-center'>{{game.points}}</td>
+        <td class='text-center'>
+          {{format-date game.date 'dd-MM-yyyy HH:mm'}}
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

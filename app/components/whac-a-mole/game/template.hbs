@@ -16,3 +16,14 @@
   @squares={{this.squares}}
   @onCatch={{this.addPoint}}
 />
+
+{{#if this.isShowSharedModal}}
+  <Shared::Modal
+    @title='Your final score'
+    @onClose={{this.onHideModal}}
+    @modalInfoType={{true}}
+  >
+    Congratulations! Your final score is:
+    {{this.finalScore}}
+  </Shared::Modal>
+{{/if}}

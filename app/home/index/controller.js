@@ -1,5 +1,4 @@
 import Controller from '@ember/controller';
-
 export default class IndexController extends Controller {
   get topMemoryPlay() {
     return this.model

@@ -6,25 +6,32 @@
   >
     <div class='carousel-inner'>
       <div class='carousel-item active'>
-        <img
-          src='assets/images/memoryBig.png'
-          class='d-block w-100'
-          alt='memory'
-        />
+        <LinkTo @route='home.memory'>
+          <img
+            src='assets/images/memoryBig.png'
+            class='d-block w-100'
+            alt='memory'
+          />
+        </LinkTo>
+
       </div>
       <div class='carousel-item'>
-        <img
-          src='assets/images/whacamoleBig.png'
-          class='d-block w-100'
-          alt='whacamole'
-        />
+        <LinkTo @route='home.whacamole'>
+          <img
+            src='assets/images/whacamoleBig.png'
+            class='d-block w-100'
+            alt='whacamole'
+          />
+        </LinkTo>
       </div>
       <div class='carousel-item'>
-        <img
-          src='assets/images/tictactoeBig.png'
-          class='d-block w-100'
-          alt='tictactoe'
-        />
+        <LinkTo @route='home.tictactoe'>
+          <img
+            src='assets/images/tictactoeBig.png'
+            class='d-block w-100'
+            alt='tictactoe'
+          />
+        </LinkTo>
       </div>
     </div>
     <button

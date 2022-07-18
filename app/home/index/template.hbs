@@ -1,16 +1,19 @@
 {{page-title 'Home'}}
 <Header>Welcome on online gaming website!</Header>
 <GameCarousel />
-<div class='row text-center mt-3'>
-  <div class='col-lg-6'>
-    <TopUser @title='Memory top player' @topPlay={{this.topMemoryPlay}} />
-  </div>
-  <div class='col-lg-6'>
-    <TopUser
-      @title='Whac a mole top player'
-      @topPlay={{this.topWhacAMolePlay}}
-    />
-  </div>
 
+<div class='m-5 text-center'>
+  <h2> TOP PLAYERS </h2>
+  <div class='row text-center mt-3'>
+    <div class='col-lg-6'>
+      <TopUser @title='Memory top player' @topPlay={{this.topMemoryPlay}} />
+    </div>
+    <div class='col-lg-6'>
+      <TopUser
+        @title='Whac a mole top player'
+        @topPlay={{this.topWhacAMolePlay}}
+      />
+    </div>
+  </div>
 </div>
 {{outlet}}

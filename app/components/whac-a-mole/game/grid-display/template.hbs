@@ -3,22 +3,22 @@
     {{#if square.isShow}}
       <img
         data-test-moleSquare
+        id={{square.id}}
         class='square user-select-none'
         draggable='false'
         role='button'
         src='/assets/images/mole.jpg'
         alt='square'
-        id={{square.id}}
         {{on 'click' @onCatch}}
       />
     {{else}}
       <img
+        data-test-whiteSquare={{index}}
+        id={{square.id}}
         class='square user-select-none pe-none'
         draggable='false'
         src='/assets/images/white.png'
         alt='square'
-        id={{square.id}}
-        data-test-whiteSquare={{index}}
       />
     {{/if}}
   {{/each}}

@@ -1,5 +1,18 @@
 {{page-title 'Whacamole'}}
-<Shared::BackToButton @route='home.games' @label='Back to menu' />
-<Shared::BackToButton @route='home.index' @label='Back to home' />
+
+<Shared::Button
+  class='btn-primary mt-2 mb-3'
+  data-bs-toggle='collapse'
+  data-bs-target='#collapseBackTo'
+  aria-expanded='false'
+  aria-controls='collapseWidthExample'
+  @label='Back to'
+/>
+
+<div class='collapse position-absolute' id='collapseBackTo'>
+  <Shared::BackToButton @route='home.games' @label='Menu' />
+  <Shared::BackToButton @route='home.index' @label='Home' />
+</div>
+
 <WhacAMole::Game />
 {{outlet}}

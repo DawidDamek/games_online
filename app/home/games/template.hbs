@@ -1,7 +1,5 @@
 {{page-title 'Games'}}
 <Header>Games</Header>
-<LinkTo @route='home.index'>
-  <Shared::Button class='btn-primary' @label='Back to Home' />
-</LinkTo>
+<Shared::BackToButton @route='home.index' @label='Back to home' />
 <Games::List @games={{this.model}} />
 {{outlet}}

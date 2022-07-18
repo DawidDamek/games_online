@@ -1,15 +1,22 @@
 <div class='card d-inline-block w-75 max-w-500 mb-5'>
-  <div class='card-header'>
+  <div data-test-title class='card-header'>
     {{@title}}
   </div>
   <ul class='list-group list-group-flush'>
-    <li class='list-group-item text-center'>
-      <img class='avatar' src={{@topPlay.player.avatarURL}} alt='user avatar' />
+    <li data-test-player-username class='list-group-item text-center'>
+      <img
+        data-test-player-avatarURL
+        class='avatar'
+        src={{@topPlay.player.avatarURL}}
+        alt='user avatar'
+      />
       {{@topPlay.player.username}}
     </li>
-    <li class='list-group-item text-center'>Points: {{@topPlay.points}}</li>
-    <li class='list-group-item text-center'>
-      Set on:{{format-date @topPlay.date 'dd-mm-yyyy'}}
+    <li data-test-points class='list-group-item text-center'>Points:
+      {{@topPlay.points}}</li>
+    <li data-test-date class='list-group-item text-center'>
+      Set on:
+      {{format-date @topPlay.date 'dd-MM-yyyy'}}
     </li>
   </ul>
 </div>

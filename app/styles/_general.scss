@@ -1,6 +1,3 @@
-@import 'ember-modal-dialog/ember-modal-structure.css';
-@import 'ember-modal-dialog/ember-modal-appearance.css';
-
 .ember-modal-dialog {
   padding: 0;
 }
@@ -9,6 +6,10 @@
   margin: 0;
   min-width: 380px;
   display: flex;
+}
+
+.max-w-500 {
+  max-width: 500px;
 }
 
 .modal-footer {

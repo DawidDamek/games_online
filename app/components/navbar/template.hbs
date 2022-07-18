@@ -1,51 +1,53 @@
 <nav class='navbar navbar-expand-lg navbar-light bg-light'>
-  <LinkTo class='navbar-brand mb-2' @route='home.index'>Home</LinkTo>
-  <button
-    class='navbar-toggler'
-    type='button'
-    data-bs-toggle='collapse'
-    data-bs-target='#navbarNav'
-    aria-controls='navbarNav'
-    aria-expanded='false'
-    aria-label='Toggle navigation'
-  >
-    <span class='navbar-toggler-icon'></span>
-  </button>
-  <div class='collapse navbar-collapse' id='navbarNav'>
-    <ul class='navbar-nav'>
-      <li class='nav-item'>
-        <LinkTo class='nav-link' @route='home.games'>Games</LinkTo>
-      </li>
-      <li class='nav-item'>
-        <LinkTo class='nav-link' @route='home.users'>Users</LinkTo>
-      </li>
-      <li class='nav-item'>
-        <LinkTo class='nav-link' @route='home.user-settings'>Settings</LinkTo>
-      </li>
-      <li class='nav-item'>
-        <span class='nav-link'>Logged as:
+  <div class='container'>
+    <LinkTo class='navbar-brand mb-2' @route='home.index'>Home</LinkTo>
+    <button
+      class='navbar-toggler'
+      type='button'
+      data-bs-toggle='collapse'
+      data-bs-target='#navbarNav'
+      aria-controls='navbarNav'
+      aria-expanded='false'
+      aria-label='Toggle navigation'
+    >
+      <span class='navbar-toggler-icon'></span>
+    </button>
+    <div id='navbarNav' class='collapse navbar-collapse'>
+      <ul class='navbar-nav'>
+        <li class='nav-item'>
+          <LinkTo class='nav-link' @route='home.games'>Games</LinkTo>
+        </li>
+        <li class='nav-item'>
+          <LinkTo class='nav-link' @route='home.users'>Users</LinkTo>
+        </li>
+        <li class='nav-item'>
+          <LinkTo class='nav-link' @route='home.user-settings'>Settings</LinkTo>
+        </li>
+        <li class='nav-item'>
+          <span class='nav-link'>Logged as:
 
-          <LinkTo class='noDecorator' @route='home.user-settings'>
-            <img
-              width='30'
-              height='30'
-              class='d-inline-block align-center'
-              src={{this.loggedUser.avatarURL}}
-              alt='avatar'
-            />
-            {{this.loggedUser.username}}
-          </LinkTo>
-        </span>
+            <LinkTo class='noDecorator' @route='home.user-settings'>
+              <img
+                width='30'
+                height='30'
+                class='d-inline-block align-center'
+                src={{this.loggedUser.avatarURL}}
+                alt='avatar'
+              />
+              {{this.loggedUser.username}}
+            </LinkTo>
+          </span>
 
-      </li>
-      <li class='nav-item'>
-        <span
-          role='button'
-          class='nav-link'
-          {{on 'click' this.onLogout}}
-        >Logout</span>
-      </li>
-    </ul>
+        </li>
+        <li class='nav-item'>
+          <span
+            role='button'
+            class='nav-link'
+            {{on 'click' this.onLogout}}
+          >Logout</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
 {{yield}}

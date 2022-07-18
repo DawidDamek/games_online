@@ -1,4 +1,18 @@
 {{page-title 'Whacamole'}}
-<BackToMenu />
+
+<Shared::Button
+  class='btn-primary mt-2 mb-3 mx-2'
+  data-bs-toggle='collapse'
+  data-bs-target='#collapseBackTo'
+  aria-expanded='false'
+  aria-controls='collapseWidthExample'
+  @label='Back to'
+/>
+
+<div id='collapseBackTo' class='collapse position-absolute'>
+  <Shared::BackToButton @route='home.games' @label='Menu' />
+  <Shared::BackToButton @route='home.index' @label='Home' />
+</div>
+
 <WhacAMole::Game />
 {{outlet}}

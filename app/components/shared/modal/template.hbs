@@ -18,16 +18,16 @@
             />
           {{else}}
             <Shared::Button
-              data-test-confirm-button
-              class='btn-success'
-              @label='Confirm'
-              @onClick={{@onConfirm}}
-            />
-            <Shared::Button
               data-test-cancel-button
               class='btn-danger'
               @label='Cancel'
               @onClick={{@onClose}}
+            />
+            <Shared::Button
+              data-test-confirm-button
+              class='btn-success'
+              @label='Confirm'
+              @onClick={{@onConfirm}}
             />
           {{/if}}
         </div>

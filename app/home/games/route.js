@@ -7,7 +7,7 @@ export default class GamesRoute extends Route {
         id: 1,
         title: 'Memory game',
         picture: 'assets/images/memory.png',
-        description: 'Match the cards into pairs',
+        description: 'Be the fastest player who find all pairs',
         link: 'home.memory',
       },
       {
@@ -21,7 +21,7 @@ export default class GamesRoute extends Route {
         id: 3,
         title: 'Tic-Tac-Toe',
         picture: 'assets/images/TicTacToe.png',
-        description: 'MULTIPLAYER TicTacToe',
+        description: 'Classic game whick can be played in multiplayer mode',
         link: 'home.tictactoe',
       },
     ];

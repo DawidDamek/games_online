@@ -2,8 +2,12 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { cloneDeep, random } from 'lodash';
+import { inject as service } from '@ember/service';
 
 export default class TicTacToeComponent extends Component {
+  @service store;
+  @service session;
+
   @tracked blocks = Array.from({ length: 9 }, (_, id) => ({
     symbol: null,
     id,
@@ -97,7 +101,7 @@ export default class TicTacToeComponent extends Component {
     this.nextMove = '𝗫';
   }
 
-  checkWinner() {
+  async checkWinner() {
     const boardLine = this.matrix.map((line) => {
       return line.map((index) => this.blocks[index].symbol);
     });
@@ -105,16 +109,37 @@ export default class TicTacToeComponent extends Component {
     if (this.blocks.every(({ symbol }) => symbol !== null)) {
       this.winner = 'Nobody';
       this.isShowSharedModal = true;
+      const gameHistory = await this.store.createRecord('gameHistory', {
+        gameName: 'Tic Tac Toe',
+        date: new Date(),
+        points: null,
+        player: this.session.currentUser,
+      });
+      gameHistory.save();
     }
-    boardLine.forEach((line) => {
+    boardLine.forEach(async (line) => {
       if (line.every((value) => value === '𝗫')) {
+        const gameHistory = await this.store.createRecord('gameHistory', {
+          gameName: 'Tic Tac Toe',
+          date: new Date(),
+          points: null,
+          player: this.session.currentUser,
+        });
         this.isShowSharedModal = true;
         this.winner = '𝗫';
+        gameHistory.save();
       }
 
       if (line.every((value) => value === 'O')) {
+        const gameHistory = await this.store.createRecord('gameHistory', {
+          gameName: 'Tic Tac Toe',
+          date: new Date(),
+          points: null,
+          player: this.session.currentUser,
+        });
         this.winner = 'O';
         this.isShowSharedModal = true;
+        gameHistory.save();
       }
     });
   }

@@ -1,6 +1,16 @@
 {{page-title 'Home'}}
 <Header>Welcome on online gaming website!</Header>
 <GameCarousel />
-<TopUser @title='Memory top player' />
-<TopUser @title='Whac a mole top player' />
+<div class='row text-center mt-3'>
+  <div class='col-lg-6'>
+    <TopUser @title='Memory top player' @topPlay={{this.topMemoryPlay}} />
+  </div>
+  <div class='col-lg-6'>
+    <TopUser
+      @title='Whac a mole top player'
+      @topPlay={{this.topWhacAMolePlay}}
+    />
+  </div>
+
+</div>
 {{outlet}}

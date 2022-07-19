@@ -1,4 +1,4 @@
-<Header>{{@user.username}} top scores</Header>
+<Header data-test-username>{{@user.username}} top scores</Header>
 <table class='table table-striped'>
   <thead>
     <tr>
@@ -8,8 +8,14 @@
   </thead>
   <tbody>
     <tr>
-      <td class='text-center'>{{@user.whacamoleTopScore}}</td>
-      <td class='text-center'>{{@user.memoryTopScore}}</td>
+      <td
+        data-test-whacamoleTopScore
+        class='text-center'
+      >{{@user.whacamoleTopScore}}</td>
+      <td
+        data-test-memoryTopScore
+        class='text-center'
+      >{{@user.memoryTopScore}}</td>
     </tr>
   </tbody>
 </table>

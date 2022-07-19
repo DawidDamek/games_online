@@ -1,28 +1,28 @@
-<Header>{{@user.username}} games history</Header>
+<Header>{{@model.username}} games history</Header>
 <table class='table table-sm'>
   <thead>
     <tr>
       <th class='text-center' scope='col'>
         <User::GameHistory::SortSwitcher
           @label='Game'
-          @sortParam={{@sortGame}}
-          @onToggle={{@onSortGame}}
+          @sortParam={{this.sortGame}}
+          @onToggle={{this.onSortGame}}
         />
       </th>
       <th class='text-center' scope='col'><User::GameHistory::SortSwitcher
           @label='Points'
-          @sortParam={{@sortPoints}}
-          @onToggle={{@onSortPoints}}
+          @sortParam={{this.sortPoints}}
+          @onToggle={{this.onSortPoints}}
         /></th>
       <th class='text-center' scope='col'><User::GameHistory::SortSwitcher
           @label='Date'
-          @sortParam={{@sortDate}}
-          @onToggle={{@onSortDate}}
+          @sortParam={{this.sortDate}}
+          @onToggle={{this.onSortDate}}
         /></th>
     </tr>
   </thead>
   <tbody>
-    {{#each @user as |game|}}
+    {{#each this.sortedGameHistory as |game|}}
       <tr>
         <td class='text-center'>{{game.gameName}}</td>
         <td class='text-center'>{{game.points}}</td>

@@ -26,8 +26,13 @@
         <li class='nav-item'>
           <span class='nav-link'>Logged as:
 
-            <LinkTo class='noDecorator' @route='home.user-settings'>
+            <LinkTo
+              data-test-username
+              class='noDecorator'
+              @route='home.user-settings'
+            >
               <img
+                data-test-user-avatar
                 width='30'
                 height='30'
                 class='d-inline-block align-center'

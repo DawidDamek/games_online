@@ -4,17 +4,20 @@
     <tr>
       <th class='text-center' scope='col'>
         <User::GameHistory::SortSwitcher
+          data-test-sort-game
           @label='Game'
           @sortParam={{this.sortGame}}
           @onToggle={{this.onSortGame}}
         />
       </th>
       <th class='text-center' scope='col'><User::GameHistory::SortSwitcher
+          data-test-sort-points
           @label='Points'
           @sortParam={{this.sortPoints}}
           @onToggle={{this.onSortPoints}}
         /></th>
       <th class='text-center' scope='col'><User::GameHistory::SortSwitcher
+          data-test-sort-date
           @label='Date'
           @sortParam={{this.sortDate}}
           @onToggle={{this.onSortDate}}
@@ -22,8 +25,8 @@
     </tr>
   </thead>
   <tbody>
-    {{#each this.sortedGameHistory as |game|}}
-      <tr>
+    {{#each this.sortedGameHistory as |game index|}}
+      <tr data-test-history-row={{index}}>
         <td class='text-center'>{{game.gameName}}</td>
         <td class='text-center'>{{game.points}}</td>
         <td class='text-center'>

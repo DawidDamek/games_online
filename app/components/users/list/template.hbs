@@ -8,7 +8,7 @@
         <Users::List::SortSwitcher
           @label='Memory top score'
           @sortParam={{@sortMemory}}
-          @onToggle={{@onSortToggleMemory}}
+          @onToggle={{this.onSortToggleMemory}}
         />
       </th>
 
@@ -17,13 +17,13 @@
           @label='Whac
           a Mole top score'
           @sortParam={{@sortWhacamole}}
-          @onToggle={{@onSortToggleWhac}}
+          @onToggle={{this.onSortToggleWhac}}
         />
       </th>
     </tr>
   </thead>
   <tbody>
-    {{#each @users as |user|}}
+    {{#each this.sortedUsers as |user|}}
       <tr>
         <td class='text-center'>{{user.id}}</td>
         <td class='text-center'><LinkTo

@@ -14,25 +14,25 @@ module('integration | Component | user/game-history', function (hooks) {
     const user = this.server.create('user');
     const userModel = await store.findRecord('user', user.id);
 
-    const gamehistory1 = this.server.create('game-history', {
+    this.server.create('game-history', {
       gameName: 'Whac a Mole',
       date: new Date(2022, 6, 13, 21, 37),
       points: 12,
       player: userModel.id,
     });
-    const gamehistory2 = this.server.create('game-history', {
+    this.server.create('game-history', {
       gameName: 'Whac a Mole',
       date: new Date(2022, 3, 24, 16, 20),
       points: 30,
       player: userModel.id,
     });
-    const gamehistory3 = this.server.create('game-history', {
+    this.server.create('game-history', {
       gameName: 'Memory',
       date: new Date(2022, 6, 12, 9, 11),
       points: 70,
       player: userModel.id,
     });
-    const gamehistory4 = this.server.create('game-history', {
+    this.server.create('game-history', {
       gameName: 'Memory',
       date: new Date(2022, 6, 12, 11, 11),
       points: 50,

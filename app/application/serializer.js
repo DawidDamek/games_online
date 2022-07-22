@@ -4,6 +4,6 @@ import ENV from 'games-online/config/environment';
 
 const isTesting = ENV.environment === 'test';
 
-const Adapter = isTesting ? RESTSerializer : LocalStorageSerializer;
+const Serializer = isTesting ? RESTSerializer : LocalStorageSerializer;
 
-export default class ApplicationAdapter extends Adapter {}
+export default class ApplicationSerializer extends Serializer {}

@@ -4,9 +4,11 @@ import { render, click, waitFor } from '@ember/test-helpers';
 import WhacAMoleGameComponent from 'games-online/components/whac-a-mole/game/component';
 import { hbs } from 'ember-cli-htmlbars';
 import Timer from 'ember-stopwatch/utils/timer';
+import { setupMirage } from 'ember-cli-mirage/test-support';
 
 module('integration | Component | whac-a-mole/game', function (hooks) {
   setupRenderingTest(hooks);
+  setupMirage(hooks);
 
   hooks.beforeEach(async function () {
     this.sessionService = this.owner.lookup('service:session');

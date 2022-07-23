@@ -2,10 +2,8 @@
 <Header>Users</Header>
 
 <Users::List
-  @users={{this.sortedUsers}}
+  @users={{this.model}}
   @sortMemory={{this.sortMemory}}
   @sortWhacamole={{this.sortWhacamole}}
-  @onSortToggleMemory={{this.onSortToggleMemory}}
-  @onSortToggleWhac={{this.onSortToggleWhac}}
 />
 {{outlet}}

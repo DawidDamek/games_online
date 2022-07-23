@@ -3,9 +3,11 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, click, find } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import MemoryGameComponent from 'games-online/components/memory/game/component';
+import { setupMirage } from 'ember-cli-mirage/test-support';
 
 module('integration | Component | memory/game', function (hooks) {
   setupRenderingTest(hooks);
+  setupMirage(hooks);
 
   hooks.beforeEach(async function () {
     this.sessionService = this.owner.lookup('service:session');

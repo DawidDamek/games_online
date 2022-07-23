@@ -1,14 +1,19 @@
-import Controller from '@ember/controller';
-import { tracked } from '@glimmer/tracking';
+import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default class UsersShowController extends Controller {
+export default class UserGameHistorySortSwitcherComponent extends Component {
   @tracked sortDate;
   @tracked sortPoints;
   @tracked sortGame;
 
   get sortedGameHistory() {
-    const { sortDate, sortPoints, sortGame, model } = this;
+    const {
+      sortDate,
+      sortPoints,
+      sortGame,
+      args: { model },
+    } = this;
 
     if (sortDate || sortPoints || sortGame) {
       const sortParam = sortDate || sortPoints || sortGame;
@@ -52,10 +57,10 @@ export default class UsersShowController extends Controller {
 
   sortGameHistory(sortParam, sortedBy) {
     if (sortParam === 'ASC') {
-      return this.model.gameHistory.sortBy(sortedBy);
+      return this.args.model.gameHistory.sortBy(sortedBy);
     }
     if (sortParam === 'DESC') {
-      return this.model.gameHistory.sortBy(sortedBy).reverse();
+      return this.args.model.gameHistory.sortBy(sortedBy).reverse();
     }
   }
 }

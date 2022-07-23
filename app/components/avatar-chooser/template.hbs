@@ -1,7 +1,9 @@
-<label for='avatar' class='col-form-label mx-auto'>Chose Your avatar:</label>
+<label data-test-avatarChooser for='avatar' class='col-form-label mx-auto'>Chose
+  Your avatar:</label>
 <div id='avatar' class='scrollmenu my-3'>
-  {{#each this.avatarNames as |avatar|}}
+  {{#each this.avatarNames as |avatar index|}}
     <input
+      data-test-avatar={{index}}
       id={{avatar}}
       type='image'
       src={{concat '/assets/images/icons/' avatar '.png'}}

@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
-module('integration | Component | shared/model', function (hooks) {
+module('integration | Component | shared/modal', function (hooks) {
   setupRenderingTest(hooks);
 
   test('Type info renders', async function (assert) {

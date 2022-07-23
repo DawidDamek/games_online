@@ -21,6 +21,7 @@ export default function () {
   this.get('/users/:id');
   this.post('/users');
   this.put('/users/:id');
+
   this.get('/gameHistories');
   this.get('/gameHistories/:id');
   this.post('/gameHistories');

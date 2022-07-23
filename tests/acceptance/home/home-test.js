@@ -9,6 +9,12 @@ module('Acceptance | index', function (hooks) {
 
   hooks.beforeEach(async function () {
     this.server.loadFixtures();
+
+    window.localStorage.setItem(
+      'storage:logged-as',
+      JSON.stringify({ id: '1' })
+    );
+
     this.sessionService = this.owner.lookup('service:session');
     const store = await this.owner.lookup('service:store');
 

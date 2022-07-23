@@ -8,6 +8,8 @@ module('Acceptance | whacamole', function (hooks) {
   setupMirage(hooks);
 
   hooks.beforeEach(function () {
+    this.server.loadFixtures();
+
     window.localStorage.setItem(
       'storage:logged-as',
       JSON.stringify({ id: '1' })

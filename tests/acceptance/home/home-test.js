@@ -7,11 +7,18 @@ module('Acceptance | index', function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
-  hooks.beforeEach(function () {
-    window.localStorage.setItem(
-      'storage:logged-as',
-      JSON.stringify({ id: '1' })
-    );
+  hooks.beforeEach(async function () {
+    this.server.loadFixtures();
+    this.sessionService = this.owner.lookup('service:session');
+    const store = await this.owner.lookup('service:store');
+
+    const loggedUserModel = await store.findRecord('user', '1');
+
+    this.set('store', store);
+    this.set('sessionService.currentUser', loggedUserModel);
+
+    const gamesHistories = await store.findAll('game-history');
+    this.set('game-history', gamesHistories);
   });
 
   hooks.afterEach(function () {

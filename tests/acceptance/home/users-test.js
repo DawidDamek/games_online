@@ -8,6 +8,8 @@ module('Acceptance | users', function (hooks) {
   setupMirage(hooks);
 
   hooks.beforeEach(function () {
+    this.server.loadFixtures();
+
     window.localStorage.setItem(
       'storage:logged-as',
       JSON.stringify({ id: '1' })
@@ -20,8 +22,8 @@ module('Acceptance | users', function (hooks) {
 
   test('visiting /users', async function (assert) {
     await visit('/users');
+
     assert.dom('[data-test-row="0"]').exists();
-    assert.dom('[data-test-row="1"]').exists();
     assert.strictEqual(currentURL(), '/users');
   });
 });

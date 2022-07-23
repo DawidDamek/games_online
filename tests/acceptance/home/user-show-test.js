@@ -42,7 +42,7 @@ module('Acceptance | user/show', function (hooks) {
     window.localStorage.clear();
   });
 
-  test.skip('visiting /user/id', async function (assert) {
+  test('visiting /user/id', async function (assert) {
     await visit(`/user/1`);
 
     await waitFor('[data-test-user-photoURL]', { timeout: 5000 });

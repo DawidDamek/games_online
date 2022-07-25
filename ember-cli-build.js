@@ -4,9 +4,6 @@ const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    dotEnv: {
-      clientAllowedKeys: ['DOMAIN', 'CLIENT_ID'],
-    },
     sassOptions: {
       includePaths: ['node_modules/bootstrap/scss'],
     },

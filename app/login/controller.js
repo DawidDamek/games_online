@@ -48,7 +48,7 @@ export default class LoginController extends Controller {
   @action
   onLoginOrRegisterAuth0() {
     const options = { auth: { redirect: false } };
-    const lock = new Auth0Lock(ENV.CLIENT_ID, ENV.DOMAIN, options);
+    const lock = new Auth0Lock(ENV.AUTH0_CLIENT_ID, ENV.AUTH0_DOMAIN, options);
     lock.show({ allowedConnections: ['google-oauth2'] });
 
     lock.on('authenticated', (authResult) => {

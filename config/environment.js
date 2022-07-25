@@ -6,8 +6,8 @@ module.exports = function (environment) {
     environment,
     rootURL: '/',
     locationType: 'history',
-    DOMAIN: process.env.DOMAIN,
-    CLIENT_ID: process.env.CLIENT_ID,
+    AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
+    AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

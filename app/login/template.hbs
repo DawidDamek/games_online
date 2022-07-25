@@ -33,16 +33,19 @@
       <Shared::Button @type='submit' class='btn-success' @label='Login' />
     </div>
   </form>
-  <div>
-    <span>Don't have account? </span><LinkTo @route='register'>Register</LinkTo>
+  <div class='text-center'>
+    <span>Don't have account? </span>
+    <LinkTo @route='register'>
+      <Shared::Button class='btn-primary' @label='Register' />
+    </LinkTo>
+    <span> or </span>
+    <Shared::Button
+      class='btn-primary'
+      @label='Login with Google'
+      @onClick={{this.onLoginOrRegisterAuth0}}
+    />
   </div>
 </div>
-
-<Shared::Button
-  class='btn-primary'
-  @label='Auth0'
-  @onClick={{this.onLoginOrRegisterAuth0}}
-/>
 
 {{#if this.isShowSharedModal}}
   <Shared::Modal

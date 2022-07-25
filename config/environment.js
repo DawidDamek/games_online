@@ -6,6 +6,8 @@ module.exports = function (environment) {
     environment,
     rootURL: '/',
     locationType: 'history',
+    AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
+    AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -31,7 +33,15 @@ module.exports = function (environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
+  ENV['ember-cli-mirage'] = {
+    enabled: false,
+  };
+
   if (environment === 'test') {
+    ENV['ember-cli-mirage'] = {
+      enabled: true,
+    };
+
     // Testem prefers this...
     ENV.locationType = 'none';
 

@@ -22,6 +22,31 @@ export default class SessionService extends Service {
     window.location.href = '/login';
   }
 
+  async loginOrRegisterBy0auth({
+    nickname: username,
+    email,
+    picture: photoURL,
+  }) {
+    const password = '';
+    const users = await this.store.query('user', {
+      filter: { email },
+    });
+    let user = users.firstObject;
+    if (!user) {
+      user = await this.store
+        .createRecord('user', {
+          username,
+          password,
+          email,
+          photoURL,
+        })
+        .save();
+    }
+
+    this.loggedAs.set('id', user.id);
+    window.location.href = '/';
+  }
+
   async setCurrentUser() {
     const userId = this.loggedAs.get('id');
     const user = await this.store.findRecord('user', userId);

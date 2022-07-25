@@ -81,6 +81,7 @@
     "edition": "octane"
   },
   "dependencies": {
+    "auth0-lock": "^11.33.2",
     "chart.js": "2.9.4",
     "date-fns": "^2.28.0",
     "ember-modal-dialog": "^4.0.1"

@@ -38,6 +38,12 @@
   </div>
 </div>
 
+<Shared::Button
+  class='btn-primary'
+  @label='Auth0'
+  @onClick={{this.onLoginOrRegisterAuth0}}
+/>
+
 {{#if this.isShowSharedModal}}
   <Shared::Modal
     @title='Warning'

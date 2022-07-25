@@ -2,6 +2,10 @@ import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import Auth0Lock from 'auth0-lock';
+
+const clientId = 'YMyNn8AN7EkZQjAy8WHbX9Jc4LrYwtB4';
+const domain = 'dev-4pbsyp02.us.auth0.com';
 
 export default class LoginController extends Controller {
   @service store;
@@ -41,6 +45,25 @@ export default class LoginController extends Controller {
     } else {
       this.isShowSharedModal = true;
     }
+  }
+
+  @action
+  onLoginOrRegisterAuth0() {
+    const options = { auth: { redirect: false } };
+    const lock = new Auth0Lock(clientId, domain, options);
+    lock.show({ allowedConnections: ['google-oauth2'] });
+
+    lock.on('authenticated', (authResult) => {
+      lock.getUserInfo(authResult.accessToken, async (error, profileResult) => {
+        if (error) {
+          console.log('error', error);
+          return;
+        }
+        const profile = profileResult;
+
+        await this.session.loginOrRegisterBy0auth(profile);
+      });
+    });
   }
 
   clearFields() {

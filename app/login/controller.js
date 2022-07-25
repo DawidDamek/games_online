@@ -3,9 +3,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import Auth0Lock from 'auth0-lock';
-
-const clientId = 'YMyNn8AN7EkZQjAy8WHbX9Jc4LrYwtB4';
-const domain = 'dev-4pbsyp02.us.auth0.com';
+import ENV from 'games-online/config/environment';
 
 export default class LoginController extends Controller {
   @service store;
@@ -50,7 +48,7 @@ export default class LoginController extends Controller {
   @action
   onLoginOrRegisterAuth0() {
     const options = { auth: { redirect: false } };
-    const lock = new Auth0Lock(clientId, domain, options);
+    const lock = new Auth0Lock(ENV.CLIENT_ID, ENV.DOMAIN, options);
     lock.show({ allowedConnections: ['google-oauth2'] });
 
     lock.on('authenticated', (authResult) => {

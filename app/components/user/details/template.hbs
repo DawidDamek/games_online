@@ -1,15 +1,31 @@
 {{! template-lint-disable no-inline-styles }}
 
 <div class='card mx-auto' style='width: 18rem;'>
-  <img src='{{@user.photoURL}}' class='card-img-top' alt='user' />
+  <img
+    data-test-user-photoURL
+    src='{{@user.photoURL}}'
+    class='card-img-top'
+    alt='user'
+  />
   <div class='card-body'>
-    <h5 class='card-title text-center'>{{@user.username}}
-      <img class='avatar' src={{@user.avatarURL}} alt='avatar' />
+    <h5
+      data-test-user-username
+      class='card-title text-center'
+    >{{@user.username}}
+      <img
+        data-test-user-avatarURL
+        class='avatar'
+        src={{@user.avatarURL}}
+        alt='avatar'
+      />
     </h5>
   </div>
   <ul class='list-group list-group-flush'>
-    <li class='list-group-item'>Unique ID: {{@user.id}}</li>
-    <li class='list-group-item'>Email: {{@user.email}}</li>
-    <li class='list-group-item'>Password: {{@user.password}}</li>
+    <li data-test-user-id class='list-group-item'>Unique ID:
+      {{@user.id}}</li>
+    <li data-test-user-email class='list-group-item'>Email:
+      {{@user.email}}</li>
+    <li data-test-user-password class='list-group-item'>Password:
+      {{@user.password}}</li>
   </ul>
 </div>

@@ -1,3 +1,14 @@
+.validation-container {
+  min-height: 20px;
+  vertical-align: middle;
+}
+
+.validation-err {
+  font-size: 10px;
+  color: #c35656;
+  line-height: 1;
+}
+
 .ember-modal-dialog {
   padding: 0;
 }

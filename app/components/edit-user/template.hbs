@@ -15,6 +15,13 @@
         value={{this.userChangeset.username}}
         {{on 'input' (fn this.onPropertyChange 'username')}}
       />
+      <div class='validation-container'>
+        {{#if this.userChangeset.error.username}}
+          <span class='validation-err'>
+            {{this.userChangeset.error.username.validation}}
+          </span>
+        {{/if}}
+      </div>
     </div>
   </div>
   <div class='mb-3 row'>
@@ -28,6 +35,13 @@
         value={{this.userChangeset.email}}
         {{on 'input' (fn this.onPropertyChange 'email')}}
       />
+      <div class='validation-container'>
+        {{#if this.userChangeset.error.email}}
+          <span class='validation-err'>
+            {{this.userChangeset.error.email.validation}}
+          </span>
+        {{/if}}
+      </div>
     </div>
   </div>
 
@@ -42,6 +56,13 @@
         value={{this.userChangeset.photoURL}}
         {{on 'input' (fn this.onPropertyChange 'photoURL')}}
       />
+      <div class='validation-container'>
+        {{#if this.userChangeset.error.photoURL}}
+          <span class='validation-err'>
+            {{this.userChangeset.error.photoURL.validation}}
+          </span>
+        {{/if}}
+      </div>
     </div>
   </div>
   <div class='mb-3 row'>
@@ -55,6 +76,13 @@
         value={{this.userChangeset.password}}
         {{on 'input' (fn this.onPropertyChange 'password')}}
       />
+      <div class='validation-container'>
+        {{#if this.userChangeset.error.password}}
+          <span class='validation-err'>
+            {{this.userChangeset.error.password.validation}}
+          </span>
+        {{/if}}
+      </div>
     </div>
   </div>
   <div class='mb-3 row'>
@@ -62,7 +90,7 @@
       <Shared::Button
         data-test-save-button
         class='w-50 ms-1 btn-success'
-        disabled={{this.shouldDisabledButton}}
+        disabled={{this.shouldDisabledSaveButton}}
         @label='Save'
         @type='submit'
       />
@@ -70,7 +98,7 @@
       <Shared::Button
         data-test-cancel-button
         class='w-50 ms-1 btn-danger'
-        disabled={{this.shouldDisabledButton}}
+        disabled={{this.shouldDisabledCancelButton}}
         @label='Cancel'
         @onClick={{this.rollback}}
       />

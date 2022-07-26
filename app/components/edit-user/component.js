@@ -2,17 +2,29 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { Changeset } from 'ember-changeset';
 import { tracked } from '@glimmer/tracking';
+import EditUserValidations from '../../validations/edit-user';
+import lookupValidator from 'ember-changeset-validations';
 
 export default class EditUserComponent extends Component {
   @tracked isShowSharedModal = false;
 
   constructor() {
     super(...arguments);
-    this.userChangeset = new Changeset(this.args.user);
+    this.userChangeset = new Changeset(
+      this.args.user,
+      lookupValidator(EditUserValidations),
+      EditUserValidations
+    );
   }
 
-  get shouldDisabledButton() {
-    return !this.userChangeset.isDirty;
+  get shouldDisabledSaveButton() {
+    const { userChangeset } = this;
+    return !(userChangeset.isDirty && userChangeset.errors.length === 0);
+  }
+
+  get shouldDisabledCancelButton() {
+    const { userChangeset } = this;
+    return !userChangeset.isDirty;
   }
 
   @action

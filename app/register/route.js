@@ -14,8 +14,4 @@ export default class RegisterRoute extends Route {
       return;
     }
   }
-
-  model() {
-    return this.store.createRecord('user');
-  }
 }

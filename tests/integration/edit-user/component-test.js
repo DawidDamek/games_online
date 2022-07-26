@@ -47,14 +47,23 @@ module('integration | Component | edit-user', function (hooks) {
 
     assert
       .dom('[data-test-save-button]')
-      .hasNoAttribute('disabled', '', 'Save button is disabled before changes');
+      .hasAttribute(
+        'disabled',
+        '',
+        'Save button is disabled with uncorrect changes'
+      );
     assert
       .dom('[data-test-cancel-button]')
       .hasNoAttribute(
         'disabled',
         '',
-        'Cancel button is disabled before changes'
+        'Cancel button is not disabled when data changes'
       );
+
+    await fillIn('[data-test-input-email]', 'test@email.com');
+    await fillIn('[data-test-input-photoURL]', faker.image.avatar());
+    await fillIn('[data-test-input-username]', `testUsername`);
+    await fillIn('[data-test-input-password]', `testPassword1!`);
 
     const clickedAvatarURL = find('[data-test-avatar="5"]').getAttribute('src');
 
@@ -64,8 +73,8 @@ module('integration | Component | edit-user', function (hooks) {
       .dom('[data-test-user-avatarURL]')
       .hasAttribute('src', clickedAvatarURL);
     assert.dom('[data-test-user-username]').includesText('testUsername');
-    assert.dom('[data-test-user-email]').includesText('test@email');
-    assert.dom('[data-test-user-password]').includesText('testPassword');
+    assert.dom('[data-test-user-email]').includesText('test@email.com');
+    assert.dom('[data-test-user-password]').includesText('testPassword1!');
   });
 
   test('User editor data cancel', async function (assert) {
@@ -116,25 +125,25 @@ module('integration | Component | edit-user', function (hooks) {
       );
   });
 
-  test('User editor data save', async function (assert) {
+  test('User editor correct data save', async function (assert) {
     await click('[data-test-avatar="5"]');
-    await fillIn('[data-test-input-email]', 'test@email');
+    await fillIn('[data-test-input-email]', 'test@email.com');
     await fillIn('[data-test-input-photoURL]', faker.image.avatar());
     await fillIn('[data-test-input-username]', `testUsername`);
-    await fillIn('[data-test-input-password]', `testPassword`);
-
+    await fillIn('[data-test-input-password]', `testPassword1!`);
     const changedPhotoUrl = find('[data-test-input-photoURL]').value;
 
     await click('[data-test-save-button]');
+
     assert
       .dom('[data-test-input-username]')
       .hasValue('testUsername', 'Preview uesrname is correct');
     assert
       .dom('[data-test-input-password]')
-      .hasValue('testPassword', 'Preview password is correct');
+      .hasValue('testPassword1!', 'Preview password is correct');
     assert
       .dom('[data-test-input-email]')
-      .hasValue('test@email', 'Preview email is correct');
+      .hasValue('test@email.com', 'Preview email is correct');
     assert
       .dom('[data-test-input-photoURL]')
       .hasValue(changedPhotoUrl, 'Preview photo is correct');
@@ -145,10 +154,10 @@ module('integration | Component | edit-user', function (hooks) {
       .hasValue('testUsername', 'After save username is changed');
     assert
       .dom('[data-test-input-password]')
-      .hasValue('testPassword', 'After save password is changed');
+      .hasValue('testPassword1!', 'After save password is changed');
     assert
       .dom('[data-test-input-email]')
-      .hasValue('test@email', 'After save email is changed');
+      .hasValue('test@email.com', 'After save email is changed');
     assert
       .dom('[data-test-input-photoURL]')
       .hasValue(changedPhotoUrl, 'After save photo is changed');

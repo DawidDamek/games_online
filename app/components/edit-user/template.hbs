@@ -15,13 +15,9 @@
         value={{this.userChangeset.username}}
         {{on 'input' (fn this.onPropertyChange 'username')}}
       />
-      <div class='validation-container'>
-        {{#if this.userChangeset.error.username}}
-          <span class='validation-err'>
-            {{this.userChangeset.error.username.validation}}
-          </span>
-        {{/if}}
-      </div>
+      <ValidationContainer
+        @changesetError={{this.userChangeset.error.username}}
+      />
     </div>
   </div>
   <div class='mb-3 row'>
@@ -35,13 +31,7 @@
         value={{this.userChangeset.email}}
         {{on 'input' (fn this.onPropertyChange 'email')}}
       />
-      <div class='validation-container'>
-        {{#if this.userChangeset.error.email}}
-          <span class='validation-err'>
-            {{this.userChangeset.error.email.validation}}
-          </span>
-        {{/if}}
-      </div>
+      <ValidationContainer @changesetError={{this.userChangeset.error.email}} />
     </div>
   </div>
 
@@ -56,13 +46,9 @@
         value={{this.userChangeset.photoURL}}
         {{on 'input' (fn this.onPropertyChange 'photoURL')}}
       />
-      <div class='validation-container'>
-        {{#if this.userChangeset.error.photoURL}}
-          <span class='validation-err'>
-            {{this.userChangeset.error.photoURL.validation}}
-          </span>
-        {{/if}}
-      </div>
+      <ValidationContainer
+        @changesetError={{this.userChangeset.error.photoURL}}
+      />
     </div>
   </div>
   <div class='mb-3 row'>
@@ -76,13 +62,9 @@
         value={{this.userChangeset.password}}
         {{on 'input' (fn this.onPropertyChange 'password')}}
       />
-      <div class='validation-container'>
-        {{#if this.userChangeset.error.password}}
-          <span class='validation-err'>
-            {{this.userChangeset.error.password.validation}}
-          </span>
-        {{/if}}
-      </div>
+      <ValidationContainer
+        @changesetError={{this.userChangeset.error.password}}
+      />
     </div>
   </div>
   <div class='mb-3 row'>

@@ -14,13 +14,9 @@
           placeholder='username'
           {{on 'input' (fn this.onPropertyChange 'username')}}
         />
-        <div class='validation-container'>
-          {{#if this.registerChangeset.error.username}}
-            <span class='validation-err'>
-              {{this.registerChangeset.error.username.validation}}
-            </span>
-          {{/if}}
-        </div>
+        <ValidationContainer
+          @changesetError={{this.registerChangeset.error.username}}
+        />
       </div>
     </div>
     <div class='mb-3 row'>
@@ -33,13 +29,9 @@
           placeholder='email'
           {{on 'input' (fn this.onPropertyChange 'email')}}
         />
-        <div class='validation-container'>
-          {{#if this.registerChangeset.error.email}}
-            <span class='validation-err'>
-              {{this.registerChangeset.error.email.validation}}
-            </span>
-          {{/if}}
-        </div>
+        <ValidationContainer
+          @changesetError={{this.registerChangeset.error.email}}
+        />
       </div>
     </div>
     <div class='mb-3 row'>
@@ -56,13 +48,9 @@
           placeholder='photoURL'
           {{on 'input' (fn this.onPropertyChange 'photoURL')}}
         />
-        <div class='validation-container'>
-          {{#if this.registerChangeset.error.photoURL}}
-            <span class='validation-err'>
-              {{this.registerChangeset.error.photoURL.validation}}
-            </span>
-          {{/if}}
-        </div>
+        <ValidationContainer
+          @changesetError={{this.registerChangeset.error.photoURL}}
+        />
       </div>
     </div>
     <div class='mb-3 row'>
@@ -78,13 +66,9 @@
           placeholder='password'
           {{on 'input' (fn this.onPropertyChange 'password')}}
         />
-        <div class='validation-container'>
-          {{#if this.registerChangeset.error.password}}
-            <span class='validation-err'>
-              {{this.registerChangeset.error.password.validation}}
-            </span>
-          {{/if}}
-        </div>
+        <ValidationContainer
+          @changesetError={{this.registerChangeset.error.password}}
+        />
       </div>
     </div>
     <div class='mb-3 row'>

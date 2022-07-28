@@ -9,9 +9,9 @@ export default class RegisterController extends Controller {
   @service store;
   @service router;
 
-  user = this.store.createRecord('user');
   constructor() {
     super(...arguments);
+    this.user = this.store.createRecord('user');
     this.registerChangeset = new Changeset(
       this.user,
       lookupValidator(EditUserValidations),

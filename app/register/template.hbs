@@ -12,7 +12,10 @@
           type='text'
           class='form-control'
           placeholder='username'
-          {{on 'input' this.onLoginChange}}
+          {{on 'input' (fn this.onPropertyChange 'username')}}
+        />
+        <ValidationContainer
+          @changesetError={{this.registerChangeset.error.username}}
         />
       </div>
     </div>
@@ -24,12 +27,15 @@
           type='text'
           class='form-control'
           placeholder='email'
-          {{on 'input' this.onEmailChange}}
+          {{on 'input' (fn this.onPropertyChange 'email')}}
+        />
+        <ValidationContainer
+          @changesetError={{this.registerChangeset.error.email}}
         />
       </div>
     </div>
     <div class='mb-3 row'>
-      <AvatarChooser @onChange={{this.onAvatarChange}} />
+      <AvatarChooser @onChange={{(fn this.onPropertyChange 'avatarURL')}} />
     </div>
 
     <div class='mb-3 row'>
@@ -40,7 +46,10 @@
           type='text'
           class='form-control'
           placeholder='photoURL'
-          {{on 'input' this.onPhotoURLChange}}
+          {{on 'input' (fn this.onPropertyChange 'photoURL')}}
+        />
+        <ValidationContainer
+          @changesetError={{this.registerChangeset.error.photoURL}}
         />
       </div>
     </div>
@@ -55,12 +64,20 @@
           type='password'
           class='form-control'
           placeholder='password'
-          {{on 'input' this.onPasswordChange}}
+          {{on 'input' (fn this.onPropertyChange 'password')}}
+        />
+        <ValidationContainer
+          @changesetError={{this.registerChangeset.error.password}}
         />
       </div>
     </div>
     <div class='mb-3 row'>
-      <Shared::Button @type='submit' class='btn-success' @label='Register' />
+      <Shared::Button
+        @type='submit'
+        class='btn-success'
+        @label='Register'
+        disabled={{this.shouldBeAbleToRegister}}
+      />
     </div>
   </form>
   <div>

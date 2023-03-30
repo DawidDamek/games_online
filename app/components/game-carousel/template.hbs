@@ -62,7 +62,11 @@
     </button>
   </div>
   <LinkTo @route='home.games'>
-    <Shared::Button class='btn-primary' @label='Check the games' />
+    <Shared::Button
+      class='btn-primary'
+      @label='Check the games'
+      disabled={{cannot 'press button'}}
+    />
   </LinkTo>
 
 </div>

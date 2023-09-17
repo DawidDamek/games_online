@@ -25,7 +25,9 @@
       {{@user.id}}</li>
     <li data-test-user-email class='list-group-item'>Email:
       {{@user.email}}</li>
-    <li data-test-user-password class='list-group-item'>Password:
-      {{@user.password}}</li>
+    {{#if (can 'see secrets in user' @user.id)}}
+      <li data-test-user-password class='list-group-item'>Password:
+        {{@user.password}}</li>
+    {{/if}}
   </ul>
 </div>

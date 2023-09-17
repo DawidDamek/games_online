@@ -61,9 +61,9 @@
       <span class='visually-hidden'>Next</span>
     </button>
   </div>
-  <LinkTo @route='home.games'>
+  <LinkTo @route='home.games' class={{if (cannot 'press button') 'pe-none'}}>
     <Shared::Button
-      class='btn-primary'
+      class={{if (can 'press button') 'btn-primary' 'btn-danger'}}
       @label='Check the games'
       disabled={{cannot 'press button'}}
     />

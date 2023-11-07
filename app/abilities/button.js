@@ -9,6 +9,7 @@ export default class PostAbility extends Ability {
   }
 
   get canPress() {
-    return this.user.isAdmin;
+    // return this.user.isAdmin;
+    return true;
   }
 }

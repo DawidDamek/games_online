@@ -5,6 +5,7 @@ export default class pageAbility extends Ability {
   @service session;
 
   get canVisit() {
-    return Boolean(this.session.currentUser);
+    // return Boolean(this.session.currentUser);
+    return true;
   }
 }

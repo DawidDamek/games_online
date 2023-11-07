@@ -12,10 +12,10 @@ export default class HomeRoute extends Route {
       this.router.transitionTo('/login');
       return;
     }
-    if (this.abilities.cannot('visit page')) {
-      this.router.transitionTo('/login');
-      return;
-    }
+    //  if (this.abilities.cannot('visit page')) {
+    //    this.router.transitionTo('/login');
+    //    return;
+    //  }
     await this.session.setCurrentUser();
   }
 }

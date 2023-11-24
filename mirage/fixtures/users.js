@@ -25,4 +25,14 @@ export default [
       return faker.datatype.number({ max: 100 });
     },
   },
+  {
+    id: 2,
+    username: 'Dawid',
+    email: 'example@mail.com',
+    password: 'abc123',
+    photoURL: 'photo.com',
+    avatarURL: 'avatar.com',
+    whacamoleTopScore: 15,
+    memoryTopScore: 10,
+  },
 ];

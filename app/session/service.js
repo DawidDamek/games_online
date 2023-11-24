@@ -47,6 +47,67 @@ export default class SessionService extends Service {
     window.location.href = '/';
   }
 
+  async fetchSomething() {
+    try {
+      const response = await fetch(
+        'https://jsonplaceholder.typicode.com/todos/1'
+      );
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
+
+  async putRecord(id, updatedData) {
+    try {
+      const data = await this.fetchSomething;
+
+      const updatedRecord = { ...data, ...updatedData };
+
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/todos/${id}`,
+        {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedRecord),
+        }
+      );
+
+      const responseData = await response.json();
+
+      return responseData;
+    } catch (error) {
+      console.error('Error updating record:', error);
+      throw error;
+    }
+  }
+
+  async patchRecord(id, updatedData) {
+    try {
+      const response = await fetch(
+        `https://jsonplaceholder.typicode.com/todos/${id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedData),
+        }
+      );
+
+      const responseData = await response.json();
+
+      return responseData;
+    } catch (error) {
+      console.error('Error updating record:', error);
+      throw error;
+    }
+  }
+
   async setCurrentUser() {
     const userId = this.loggedAs.get('id');
     const user = await this.store.findRecord('user', userId);
